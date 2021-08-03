@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Liên hệ</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <i class="fab fa-apple navbar-brand" aria-hidden="true" style="font-size:30px">
+            TrunkApple</i>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li>
+                    <a class="nav-link" href="./index.html">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./iPhone.html">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./LienHe.html">Liên hệ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./gioithieu.html">Giới thiệu</a>
+                </li>
+            </ul>
+            <input id="nav-search" type="text" class="form-control" placeholder="Bạn muốn tìm gì?" required>
+            <button id="search" type="button" class="btn btn-success btn-search" data-toggle="modal"
+                data-target="#myModal" onclick="mySearch()">Tìm kiếm
+            </button>
+             
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 id="title-modal" class="modal-title"></h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div id="body-modal" class="modal-body">
+                            Modal body..
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </nav>
+    <div class="covid-ribbon text-center bg-light">
+        <span style="margin-left: 220px;">Shop online and get Specialist help, free no-contact delivery, and
+            more.</span>
+        <div class="float-right d-flex">
+            <!-- //Button sigin -->
+            <div class="dropdown mr-3">
+                <a id="signin" data-toggle="modal" data-status="0" data-target="#dangnhap"><span id="status-signin">Đăng
+                        nhập</span></a>
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a id="exit" href="./index.html">Thoát</a></li>
+                </ul>
+            </div>
+
+            <!-- Button Cart -->
+            <button id="cart-button" data-toggle="modal" data-target="#myModal2" class="btn btn-secondary d-inline"
+                style="display: block;margin: 1px 17px 0px 0px;">
+                <i class="fas fa-cart-arrow-down d-inline " style="padding-right:3px;width: 70px;font-size: 15px;"
+                    aria-hidden="true">
+                </i>cart <span id="dot-number" style="color: white"> 0</span>
+            </button>
+        </div>
+    </div>
+    <!-- ===================================================================== -->
+    <!-- ===========================MODAL Đăng nhập====================== -->
+    <div id="dangnhap" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Đăng nhập</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <input id="phone-signin" class="form-control mb-2" type="number"
+                            placeholder="Nhập số điện thoại...">
+                        <input id="password-signin" class="form-control mb-2" type="password"
+                            placeholder="Nhập mật khẩu...">
+                        <div class="text-center">
+                            <p id="signin-error" style="color:red"></p>
+                            <button id="signin-button" type="button" class="btn btn-primary">Đăng nhập</button>
+                            <a href="signup.html" class="btn btn-secondary">Đăng kí</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog">
+            <div id="modal-size" class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 id="title-modal" class="modal-title">Giỏ hàng của bạn</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div id="body-modal" class="modal-body  ">
+                    <table id="modal-list" class="text-center">
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <span>Tổng tiền: <span id="tongtien"><b>0</b></span>đ </span>
+                    <button id="thanhtoan" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Thanh toán</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="myModal3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4>Thông tin liên hệ khách hàng</h4>
+                    <button type="button" class="close" data-dismiss="modal" style="border: 0px;">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <label for="name">Họ và tên: </label>
+                            <input type="text" class="form-control" placeholder="Nhập họ và tên" id="name">
+                            <p style="color:red" id="name-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" placeholder="Nhập email" id="email">
+                            <p style="color:red" id="mail-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại:</label>
+                            <input type="text" class="form-control" placeholder="Nhập SĐT" id="phone">
+                            <p style="color:red" id="phone-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Địa chỉ:</label>
+                            <input type="text" class="form-control" placeholder="Nhập địa chỉ" id="address">
+                            <p style="color:red" id="Diachi-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="hinhthuc">Hình thức mua hàng:</label> <br>
+                            <input type="radio" name="shop" id="home" checked>Mua tại cửa hàng
+                            <input style="margin-left: 10px;" type="radio" name="shop" id="store">Ship COD
+                            <br>
+                            <p style="color:red" id="hinhthuc-error"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+
+                <div type="submit" class="modal-footer" style="text-align: center; display: block;">
+                    <button id="btn-dathang" type="button" class="btn btn-primary">Đặt
+                        hàng</button>
+                    <a href="./index.html" type="button" class="btn btn-success" id="continue" hidden >Tiếp tục mua sắm</a>
+                    <p id="dathang" style="color:rgb(9, 201, 9)"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <a href="index.html">Trang chủ</a>/ Liên hệ
+    </div>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-6 col-sm-12">
+                <h4>TrunkApple Sài Gòn</h4>
+                <p class="mb-0">36 Trịnh Đình Thảo P.Hòa Thạnh Q.Tân Phú, Hồ Chí Minh</p>
+                <p  class="mb-0">Giờ mở cửa: 9:00 - 21:00</p>
+                <p  class="mb-4">Hotline: 0388.888.999</p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4918356610237!2d106.63341331436035!3d10.773591892323488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ea3dad6b111%3A0x8f81ed645c6eadc4!2zMzYgVHLhu4tuaCDEkMOsbmggVGjhuqNvLCBQaMO6IFRydW5nLCBUw6JuIFBow7osIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1625286178436!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="col-lg-6 col-sm-12">
+                <img style="height:385px" src="image/lienhe.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="container-fluid footer">
+            <a href="index.html"><img src="image/Untitled.png" alt="" style="height: 80px;" alt=""></a>
+            <p>Là chuỗi siêu thị được thành lập từ 2010 tại Hồ Chí Minh, sau đó tái cấu trúc vào 2016 và thuộc quyền sở
+                hữu của công ty Hesman, TrunkApple chính thức trở thành đại lý ủy quyền Apple (Apple Authorized
+                Reseller) từ tháng 9/2020. Với kinh nghiệm và đam mê sản phẩm Apple chúng tôi mong muốn đem trải
+                nghiệm tốt nhất về sản phẩm và dịch vụ của Apple tới toàn bộ người dùng tại Việt Nam.
+            </p>
+            <div id="footer-row" class="row">
+                <div class="col-lg-6 col-md-12 info">
+                    <h3>Thông tin & Liên hệ</h3>
+                    <a href="#">Giới thiệu</a> <br>
+                    <p>Gọi tư vấn: <b>1900.6626</b></p>
+                    <p>KH Doanh nghiệp & Đối tác <b>0268.888.999 (Mr.Vũ Kute  <i class="fa fa-heart" aria-hidden="true"></i>)</b></p>
+                    <p>Phản ánh và góp ý: <b>0288.888.666 (Mr.Trung)</b></p>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <img src="image/Thongbao.png" alt=""><br>
+                    <img class="options" src="image/mastercard.jpg" alt="">
+                    <img class="options" src="image/visa.jpg" alt="">
+                    <img class="options" src="image/tienmat.jpg" alt="">
+                    <img class="options" src="image/chuyenkhoan.jpg" alt="">
+                    <img class="options" src="image/atm.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+  
+    <!-- <script type="module">
+        import { fnameFunction, mailFunction, phoneFunction, diachiFunction } from './iPhone/exportOnBlur.js';
+    </script> -->
+    <script type="module" src="./controller/import.js"></script>
+    <script type="text/javascript" src="controller/CartAndChatBox.js"></script>
+    <script type="text/javascript" src="controller/javascript.js"></script>
+    <script type="text/javascript" src="controller/signin.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

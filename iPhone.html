@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="styleiPhone.css">
+    <title>Sản phẩm Apple</title>
+</head>
+
+<body>
+    <!-- ===================================================================== -->
+    <!-- ===========================NAVIGATION====================== -->
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+        <i class="fab fa-apple navbar-brand" aria-hidden="true" style="font-size:30px">
+                TrunkApple</i>
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li>
+                    <a class="nav-link" href="./index.html">Trang chủ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./iPhone.html">Sản phẩm</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./LienHe.html">Liên hệ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./gioithieu.html">Giới thiệu</a>
+                </li>
+            </ul>
+            <input id="nav-search" type="text" class="form-control" placeholder="Bạn muốn tìm gì?" required>
+            <button id="search" type="button" class="btn btn-success btn-search" data-toggle="modal"
+                data-target="#myModal" >Tìm kiếm</button>
+
+            <!-- The Modal -->
+            <div class="modal" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h4 id="title-modal" class="modal-title"></h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div id="body-modal" class="modal-body">
+                            Modal body..
+                        </div>
+
+                        <!-- Modal footer -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </nav>
+    <div class="covid-ribbon text-center bg-light">
+        <span style="margin-left: 220px;">Shop online and get Specialist help, free no-contact delivery, and
+            more.</span>
+        <div class="float-right d-flex">
+            <!-- //Button sigin -->
+            <div class="dropdown mr-3">
+                <a id="signin" data-toggle="modal" data-status="0" data-target="#dangnhap"><span id="status-signin">Đăng
+                        nhập</span></a>
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a id="exit" href="./index.html">Thoát</a></li>
+                </ul>
+            </div>
+
+            <!-- Button Cart -->
+            <button id="cart-button" data-toggle="modal" data-target="#myModal2" class="btn btn-secondary d-inline"
+                style="display: block;margin: 1px 17px 0px 0px;">
+                <i class="fas fa-cart-arrow-down d-inline " style="padding-right:3px;width: 70px;font-size: 15px;"
+                    aria-hidden="true">
+                </i>cart <span id="dot-number" style="color: white"> 0</span>
+            </button>
+        </div>
+    </div>
+    <!-- ===================================================================== -->
+    <!-- ===========================MODAL Đăng nhập====================== -->
+    <div id="dangnhap" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Đăng nhập</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <input id="phone-signin" class="form-control mb-2" type="number"
+                            placeholder="Nhập số điện thoại...">
+                        <input id="password-signin" class="form-control mb-2" type="password"
+                            placeholder="Nhập mật khẩu...">
+                        <div class="text-center">
+                            <p id="signin-error" style="color:red"></p>
+                            <button id="signin-button" type="button" class="btn btn-primary">Đăng nhập</button>
+                            <a href="./signup.html" class="btn btn-secondary">Đăng kí</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="title" class="title" style="width: 100%; border-bottom: 1px solid rgb(196, 196, 196) ; height: 60px;">
+        <div class="row" style="width: 100%;">
+            <h1 class="col-lg-7" style="margin: 0px 80px; font-weight: normal;">Sản phẩm</h1>
+            <div class="col-lg-3" style="padding-top: 30px;">Bộ lọc:
+                <input class="pick" type="radio" name="choose" onclick="filter(1)"> iPhone
+                <input class="pick" type="radio" name="choose" onclick="filter(2)"> iPad
+                <input class="pick" type="radio" name="choose" onclick="filter(3)"> Macbook
+                <input class="pick" type="radio" name="choose" onclick="filter(4)" checked> Tất cả
+            </div>
+        </div>
+    </div>
+    <!-- ===================================================================== -->
+    <!-- ===========================IPHONE PRODUCT====================== -->
+    <div class="container-fluid iphone-product mt-3 mb-3">
+        <div class="card-columns">
+            <div class="row justify-content-center">
+                <!-- ===============================iPhone============================= -->
+                <div id="iphone">
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-lg-5 bg-white">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/iphone-12-tím.jpg" alt="">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,0)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,0)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,0)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,0)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,0)"></span>
+                                    </div>
+                                    <p style="font-size:smaller; text-align:center;">656 đánh giá</p>
+                                </div>
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product1">iPhone 12 chính hãng VN/A(Full VAT)(128GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        9.990.000đ
+                                    </p>
+                                    <h4 id="dongia1" style="color: red;margin:0px;" value="7990000">7.990.000đ</h4>
+
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+
+                                    </p>
+
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <p class="mt-4">iPhone 12 chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>7.990.000đ</b>
+                                    </p>
+                                </div>
+                            </div>
+                            <button id="buy" class="btn btn-secondary" style="width: 100%;"
+                                onclick="Buy('iPhone 12 chính hãng VN/A(Full VAT)(128GB)','./image/iphone-12-tím.jpg',7990000)">Mua</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-lg-5 bg-white ">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/iphone-12-pro-max.jpg">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,1)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,1)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,1)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,1)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,1)"></span>
+                                    </div>
+                                    <p style="font-size:small; text-align:center;">660 đánh giá</p>
+                                </div>
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product2">iPhone 12 Pro chính hãng VN/A(Full VAT)(128GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        16.990.000đ
+                                    </p>
+                                    <h4 style="color: red;margin:0px;">14.990.000đ</h4>
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+
+                                    </p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="mt-4">iPhone 12 Pro chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>14.990.000đ</b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button id="buy" class="btn btn-secondary" style="width:100%"
+                                onclick="Buy('iPhone 12 Pro chính hãng VN/A(Full VAT)(128GB)','./image/iphone-12-pro-max.jpg',14990000)">Mua</button>
+                        </div>
+                    </div>
+
+
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-lg-5 bg-white">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/iphone-12-pro-gold-vna-00-700x700.jpg" alt="">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,2)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,2)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,2)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,2)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,2)"></span>
+                                    </div>
+                                    <p style="font-size:small; text-align:center;">646 đánh giá</p>
+                                </div>
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product3">iPhone 12 Pro Max chính hãng VN/A(Full VAT)(128GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        22.990.000đ
+                                    </p>
+                                    <h4 style="color: red;margin:0px;">19.990.000đ</h4>
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+
+                                    </p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="mt-4">iPhone 12 Pro Max chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>19.990.000đ</b>
+                                    </p>
+                                </div>
+                            </div>
+                            <button id="buy" class="btn btn-secondary" style="width:100%"
+                                onclick="Buy('iPhone 12 Pro Max chính hãng VN/A(Full VAT)(128GB)','./image/iphone-12-pro-gold-vna-00-700x700.jpg',19990000)">Mua</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- ===============================iPad============================= -->
+                <div id="ipad">
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-lg-5 bg-white">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/ipad-2020-gray-00-700x700.jpg">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,3)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,3)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,3)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,3)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,3)"></span>
+                                    </div>
+                                    <p style="font-size:small; text-align:center;">677 đánh giá</p>
+                                </div>
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product3">iPad Gen 8 chính hãng VN/A(Full VAT)(512GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        12.990.000đ
+                                    </p>
+                                    <h4 style="color: red;margin:0px;">9.990.000đ</h4>
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+
+                                    </p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="mt-4">iPad Gen 8 chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>9.990.000đ</b>
+                                    </p>
+                                </div>
+                            </div>
+                            <button id="buy" class="btn btn-secondary" style="width:100%"
+                                onclick="Buy('iPad Gen 8 chính hãng VN/A(Full VAT)(512GB)','./image/ipad-2020-gray-00-700x700.jpg',9990000)">Mua</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-lg-5 bg-white">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/ipad-air-2020-blue-wifi-00-700x700.jpg">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,4)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,4)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,4)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,4)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,4)"></span>
+                                    </div>
+                                    <p style="font-size: 13px ;font-size:small; text-align:center;">658 đánh giá</p>
+                                </div>
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product3">iPad Air 4 chính hãng VN/A(Full VAT)(512GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        18.990.000đ
+                                    </p>
+                                    <h4 style="color: red;margin:0px;">16.990.000đ</h4>
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+
+                                    </p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="mt-4">iPad Air 4 chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>16.990.000đ</b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button id="buy" class="btn btn-secondary" style="width:100%"
+                                onclick="Buy('iPad Air 4 chính hãng VN/A(Full VAT)(512GB)','./image/ipad-air-2020-blue-wifi-00-700x700.jpg',16990000)">Mua</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-lg-5 bg-white">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/ipad-pro-11-wifi-space-gray-2020-700x700.jpg">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,5)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,5)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,5)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,5)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,5)"></span>
+                                    </div>
+                                    <p style="font-size:small; text-align:center;">686 đánh giá</p>
+                                </div>
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product3">iPad Pro 2020 chính hãng VN/A(Full VAT)(512GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        25.990.000đ
+                                    </p>
+                                    <h4 style="color: red;margin:0px;">20.990.000đ</h4>
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+
+                                    </p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="mt-4">iPad Pro 2020 chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>20.990.000đ</b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button id="buy" class="btn btn-secondary" style="width:100%"
+                                onclick="Buy('iPad Pro 2020 chính hãng VN/A(Full VAT)(512GB)','./image/ipad-pro-11-wifi-space-gray-2020-700x700.jpg',20990000)">Mua</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- ===============================Macbook============================= -->
+                <div id="mac">
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-lg-5 bg-white">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/macbook-air-2018-gold-00-700x700.jpg" alt="">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,6)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,6)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,6)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,6)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,6)"></span>
+                                    </div>
+                                    <p style="font-size:small; text-align:center;">677 đánh giá</p>
+                                </div>
+
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product1">MacBook Air 2018 chính hãng VN/A(Full VAT)(256GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        19.990.000đ
+                                    </p>
+                                    <h4 id="dongia1" style="color: red;margin:0px;" value="7990000">17.990.000đ</h4>
+
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+
+                                    </p>
+                                </div>
+
+                                <div class="col-lg-12">
+                                    <p class="mt-4">MacBook Air 2018 chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>17.990.000đ</b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button id="buy" class="btn btn-secondary" style="width: 100%;"
+                                onclick="Buy('MacBook Air 2018 chính hãng VN/A(Full VAT)(256GB)','./image/macbook-air-2018-gold-00-700x700.jpg',17990000)">Mua</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body bg-light">
+                            <div class="row">
+                                <div class="col-lg-5 bg-white ">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/macbook-air-2020-chip-m1-gray-00-700x700.jpg">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,7)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,7)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,7)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,7)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,7)"></span>
+                                    </div>
+                                    <p style="font-size:small; text-align:center;">656 đánh giá</p>
+                                </div>
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product2">MacBook Air 2020 chính hãng VN/A(Full VAT)(256GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        26.990.000đ
+                                    </p>
+                                    <h4 id="dongia1" style="color: red;margin:0px;" value="7990000">24.990.000đ</h4>
+
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+                                    </p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="mt-4">MacBook Air 2020 chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>24.990.000đ</b>
+                                    </p>
+                                </div>
+
+                            </div>
+                            <button id="buy" class="btn btn-secondary" style="width:100%"
+                                onclick="Buy('MacBook Air 2020 chính hãng VN/A(Full VAT)(256GB)','./image/macbook-air-2020-chip-m1-gray-00-700x700.jpg',24990000)">Mua</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body bg-light">
+
+                            <div class="row">
+                                <div class="col-lg-5 bg-white">
+                                    <img src="./image/logo.png" alt="" style="width:60%;height:20px;">
+                                    <img src="./image/macbook-pro-2020-13-inch-chip-m1-gray-00-700x700.jpg">
+                                    <div class="rate text-center" id="rate">
+                                        <span class="fa fa-star checked" onclick="danhgia(1,8)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(2,8)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(3,8)"></span>
+                                        <span class="fa fa-star checked" onclick="danhgia(4,8)"></span>
+                                        <span class="fa fa-star" onclick="danhgia(5,8)"></span>
+                                    </div>
+                                    <p style="font-size:small; text-align:center;">856 đánh giá</p>
+                                </div>
+                                <div class="content bg-light col-lg-7">
+                                    <h5 id="name-product3">MacBook Pro 2020 chính hãng VN/A(Full VAT)(512GB)</h5>
+                                    <p
+                                        style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
+                                        42.990.000đ
+                                    </p>
+                                    <h4 style="color: red;margin:0px;">39.990.000đ</h4>
+                                    <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Khuyến mãi:</b>
+                                    </p>
+                                    <p style="font-size:small">
+                                        - Trả góp: 0% lãi suất thẻ tín dụng <br>
+                                        - Giảm 5% khi mua phụ kiện cùng nhiều ưu đã khác <br>
+                                        - Tặng voucher 100.000đ khi mua phụ kiện: Pencil, Keyboard, Magic mouse, Ốp
+                                        lưng, Sạc cáp,...
+
+                                    </p>
+                                </div>
+                                <div class="col-lg-12">
+                                    <p class="mt-4">MacBook Pro 2020 chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
+                                        <b>39.990.000đ</b>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button id="buy" class="btn btn-secondary" style="width:100%"
+                                onclick="Buy('MacBook Pro 2020 chính hãng VN/A(Full VAT)(512GB)','./image/macbook-pro-2020-13-inch-chip-m1-gray-00-700x700.jpg',39990000)">Mua</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal of Cart -->
+    <div class="modal" id="myModal2">
+        <div class="modal-dialog">
+            <div id="modal-size" class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 id="title-modal" class="modal-title">Giỏ hàng của bạn</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div id="body-modal" class="modal-body  ">
+                    <table id="modal-list" class="text-center">
+                    </table>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <span>Tổng tiền: <span id="tongtien"><b>0</b></span>đ </span>
+                    <button id="thanhtoan" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3"
+                    >Thanh toán</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="myModal3">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4>Thông tin liên hệ khách hàng</h4>
+                    <button type="button" class="close" data-dismiss="modal" style="border: 0px;">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <label for="name">Họ và tên: </label>
+                            <input type="text" class="form-control" placeholder="Nhập họ và tên" id="name">
+                            <p style="color:red" id="name-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" class="form-control" placeholder="Nhập email" id="email">
+                            <p style="color:red" id="mail-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Số điện thoại:</label>
+                            <input type="text" class="form-control" placeholder="Nhập SĐT" id="phone">
+                            <p style="color:red" id="phone-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Địa chỉ:</label>
+                            <input type="text" class="form-control" placeholder="Nhập địa chỉ" id="address">
+                            <p style="color:red" id="Diachi-error"></p>
+                        </div>
+                        <div class="form-group">
+                            <label for="hinhthuc">Hình thức mua hàng:</label> <br>
+                            <input type="radio" name="shop" id="home" checked>Mua tại cửa hàng
+                            <input style="margin-left: 10px;" type="radio" name="shop" id="store">Ship COD
+                            <br>
+                            <p style="color:red" id="hinhthuc-error"></p>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+
+                <div type="submit" class="modal-footer" style="text-align: center; display: block;">
+                    <button id="btn-dathang" type="button" class="btn btn-primary" >Đặt
+                        hàng</button>
+                    <a href="./index.html" type="button" class="btn btn-success" id="continue" hidden >Tiếp tục mua sắm</a>
+                    <p id="dathang" style="color:rgb(9, 201, 9)"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- ===================================================================== -->
+    <!-- ===========================FOOTER====================== -->
+    <footer>
+        <div class="container-fluid footer">
+            <a href="./index.html"><img src="./image/Untitled.png" alt="" style="height: 80px;" alt=""></a>
+            <p>Là chuỗi siêu thị được thành lập từ 2010 tại Hồ Chí Minh, sau đó tái cấu trúc vào 2016 và thuộc quyền sở
+                hữu của công ty Hesman, TrunkApple chính thức trở thành đại lý ủy quyền Apple (Apple Authorized
+                Reseller) từ tháng 9/2020. Với kinh nghiệm và đam mê sản phẩm Apple chúng tôi mong muốn đem trải
+                nghiệm tốt nhất về sản phẩm và dịch vụ của Apple tới toàn bộ người dùng tại Việt Nam.
+            </p>
+            <div id="footer-row" class="row">
+                <div class="col-lg-6 col-md-12 info">
+                    <h3>Thông tin & Liên hệ</h3>
+                    <a href="#">Giới thiệu</a> <br>
+                    <p>Gọi tư vấn: <b>1900.6626</b></p>
+                    <p>KH Doanh nghiệp & Đối tác <b>0268.888.999 (Mr.Vũ Kute  <i class="fa fa-heart" aria-hidden="true"></i>)</b></p>
+                    <p>Phản ánh và góp ý: <b>0288.888.666 (Mr.Trung)</b></p>
+                </div>
+                <div class="col-lg-6 col-md-12">
+                    <img src="./image/Thongbao.png" alt=""><br>
+                    <img class="options" src="./image/mastercard.jpg" alt="">
+                    <img class="options" src="./image/visa.jpg" alt="">
+                    <img class="options" src="./image/tienmat.jpg" alt="">
+                    <img class="options" src="./image/chuyenkhoan.jpg" alt="">
+                    <img class="options" src="./image/atm.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </footer>
+     <!-- ===================================================================== -->
+    <!-- ===========================POP UP CHAT====================== -->
+    <button class="open-button" onclick="openForm()" style="background-color: #0099FF;border-radius: 50%;width: 79px;padding: 19px 0px;"><i class="fab fa-facebook-messenger" style="font-size: 40px;"></i></button>
+    <div class="chat-popup" id="myForm" style="width: 400px;">
+        <form action="/action_page.php" class="form-container" style="box-shadow: 2px 7px 12px grey; max-width: 400px;">
+            <h1>Chat với shop</h1>
+            <label for="msg"><b>Message</b></label>
+            <!-- <textarea class="display-chatting m-0" name="msg" disabled>Xin chào quý khách!
+            </textarea> -->
+            <div id="chatbox" style="height: 350px;border: 1px solid silver;overflow-y:auto;margin-top: auto; margin-bottom:5px;">
+                <p style="float:left;border-radius: 10px 10px 10px 0px;width: 51%;
+padding-left: 5px;background-color: rgb(240, 240, 240);color:black;margin: 5px">TrunkApple xin kính chào quý Khách!</p>
+            </div>
+            <input id="message" type="text" class="form-control mb-4" placeholder="Nhập tin nhắn">
+            <button id="gui" type="button" class="btn" style="background-color: #0099FF;"onclick="Reply()">Gửi</button>
+            <button type="button" class="btn cancel" onclick="closeForm()" style="background-color: #376c8f;">Đóng</button>
+        </form>
+    </div>
+    
+    <!-- ===================================================================== -->
+    <!-- ===========================SCRIPT====================== -->
+    <!-- <script type="module">
+        import { fnameFunction, mailFunction, phoneFunction, diachiFunction } from './exportOnBlur.js';
+    </script> -->
+    <script type="module" src="./controller/import.js"></script>
+    <script type="text/javascript" src="./controller/javascript.js"></script>
+    <script type="text/javascript" src="./controller/CartAndChatBox.js"></script>
+    <script type="text/javascript" src="./controller/signin.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+
+</html>

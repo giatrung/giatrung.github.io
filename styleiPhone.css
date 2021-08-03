@@ -1,0 +1,324 @@
+nav #nav-search{
+    width: 20%;
+    margin-right: 10px;
+}
+nav ul li{
+    margin-right: 90px;
+}
+.covid-ribbon{
+    height: 40px;
+    line-height: 40px;
+}
+#signin{
+    cursor: pointer;
+}
+#signin:hover{
+    text-decoration:underline;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 490px;
+}
+.carousel-indicators li {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+  }
+  .carousel-control-prev-icon {
+    background-image: url(image/control-left.png);
+    width: 50px;
+    height: 70px;
+}
+.carousel-control-next-icon {
+    background-image:url(image/control-next.png);
+    width: 50px;
+    height: 70px;
+}
+.carousel-control-prev{
+    justify-content: start;
+}
+.carousel-control-next{
+    justify-content:flex-end;
+}
+/*===================================================*/
+.divider{
+    width: 100%;
+    height:50px
+}
+.card{
+    margin-bottom: 4%;
+    width: 400px !important;
+    border: 0px;
+    height: 442px;
+}
+.card-body{
+    height: 444px !important;
+}
+.card-body img{
+    width: 100%;
+    height: 320px;
+}
+.card-body h4{
+    font-weight:normal;
+    margin-top: 5%;
+    color:black;
+    font-size: 19px;
+}
+.card-body h5{
+    font-size: 19.5px;
+}
+.card a{
+    text-decoration: none;
+}
+.product .card-columns{
+    border-bottom: 1px solid rgb(235, 233, 233);
+}
+.product .card:hover{
+    transform:scale(1.1);
+    transition: 0.5s;
+}
+.introduce{
+    width: 100%;
+    height: 375px;
+}
+.introduce .card-columns{
+    display: flex;
+    justify-content: center;
+}
+.introduce .card{
+    width: 650px !important;
+    border: 0px;
+}
+.icon{
+    height:200px;
+    padding:40px 0px;
+}
+.icon-content p{
+    font-size:smaller;
+}
+.icon-content h4{
+    margin:5% 0px 1% 0px
+}
+footer{
+    background-color:rgb(247, 244, 244);
+}
+.footer{
+    padding: 20px 0px 30px 90px;
+}
+.footer img{
+    width:220px;
+    height:70px;
+    border-radius:10px;
+}
+.footer p{
+    font-size:large;
+    margin-top: 20px;
+}
+.footer a{
+    color: black;
+    text-decoration:none;
+    font-size: large; ;
+}
+.footer a:hover{
+    color: blue;
+}
+.footer .options{
+    margin-top:5%;
+    width: 15%;
+    height: 50px;
+}
+#footer-row{
+    width:100%;
+}
+/* =========================iPhone========================================*/
+.iphone-product .card-columns{
+    display: flex;
+    justify-content:center;
+}
+.iphone-product .card-columns img{
+    height:140px;
+}
+.iphone-product .card-columns .card-body{
+    height:380px;
+}
+
+/* .iphone-product .card-columns .card-body .dot{
+    height:25px;
+    width:25px;
+    border-radius:50%;
+    display:inline-block;
+} */
+.iphone-product .card-columns .card-body .checked{
+    color: orange;
+}
+.iphone-product .card-columns a{
+    color: black
+}
+#iphone .card-body{
+    box-shadow: 2px 2px 10px silver;
+}
+#ipad .card-body{
+    box-shadow: 2px 2px 10px silver;
+}
+#mac .card-body{
+    box-shadow: 2px 2px 10px silver;
+}
+/* .iphone-product .card-body:hover{
+    transform: scale(1.07);
+    transition:0.5s;
+ } */
+ /********************************/
+ .picture #bigger {
+     width: 100%;
+     margin-bottom: 3%;
+ }
+ .picture .smaller {
+    width: 19%;
+    height: 15%;
+}
+.picture .smaller:hover {
+    cursor: pointer;
+    border: 1px solid rgb(219, 219, 219)
+}
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 3px;
+  }
+  .dot:hover{
+      cursor: pointer;
+  }
+.ipad-product #storage{
+    margin-top: 5px;
+}
+.info button{
+    border:1px solid;
+}
+.info #storage{
+    line-height:50px;
+}
+.other img{
+    width:100%;
+    margin-bottom: 10px;
+}
+
+#modal-size{
+    width: 900px;
+    transform: translateX(-200px);
+}
+#modal-list tr td{
+    border: 2px solid gray;
+}
+#modal-list1 tr td{
+    border: 2px solid gray;
+}
+
+@media screen and (max-width:565px) {
+    nav #nav-search{
+        width: 300px;
+        margin-right: 10px;
+    }
+    .navbar-toggler{
+        margin-left: auto;
+    }
+    .covid-ribbon{
+        height: 85px!important;
+        font-size:small;
+    }
+    .iphone-product .row{
+        justify-content: center!important;
+    }
+    .iphone-product .card-body{
+        width: 50% !important;
+        margin: auto;
+    }
+    .iphone-product .card{
+        height:650px;
+    }
+    .iphone-product a{
+        text-decoration: none;
+    }
+    .card{
+        margin-bottom: 4%;
+        width: 400px !important;
+        border: 0px;
+        height:770px!important;
+        margin-top: 25px;
+    }
+}
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+  }
+  
+
+  /* ==============CHAT-POPUP============ */
+  /* The popup chat - hidden by default */
+  .chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+  }
+  
+  /* Add styles to the form container */
+  .form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  /* Full-width textarea */
+  .form-container textarea {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    resize: none;
+    min-height: 200px;
+  }
+  
+  /* When the textarea gets focus, do something */
+  .form-container textarea:focus {
+    background-color: #ddd;
+    outline: none;
+  }
+  
+  /* Set a style for the submit/send button */
+  .form-container .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom:10px;
+    opacity: 0.8;
+  }
+  
+  /* Add a red background color to the cancel button */
+  .form-container .cancel {
+    background-color: red;
+  }
+  
+  /* Add some hover effects to buttons */
+  .form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  #chatbox #traloi{
+      transition: 2s;
+  }
