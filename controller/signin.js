@@ -38,11 +38,10 @@ function dangnhap() {
                     document.getElementById('tongtien').innerHTML = (tongtien += item[j].dongia).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
             }
             
-            let soluongs = localStorage.getItem('soluong');
-            soluongs=parseInt(soluongs);
-            document.getElementById('dot-number').innerHTML = soluongs;
+            let soluongs = localStorage.getItem('soluong')?parseInt(localStorage.getItem('soluong')) : 0;
+            document.getElementById('dot-number').textContent = soluongs;
             let tongtien = localStorage.getItem('tongtien') ? parseInt(localStorage.getItem('tongtien')) : 0;
-            document.getElementById('tongtien').innerHTML = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+            document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 
             display();
             window.location.href = "./index.html";
@@ -78,11 +77,10 @@ function onload() {
             document.getElementById("signin").setAttribute("data-status", "1");
         }
     }
-    let soluongs = localStorage.getItem('soluong');
-    soluongs=parseInt(soluongs);
-    document.getElementById('dot-number').innerHTML = soluongs;
+    let soluongs = localStorage.getItem('soluong')?parseInt(localStorage.getItem('soluong')) : 0;
+    document.getElementById('dot-number').textContentL = soluongs;
     let tongtien = localStorage.getItem('tongtien') ? parseInt(localStorage.getItem('tongtien')) : 0;
-    document.getElementById('tongtien').innerHTML = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
     display();
 }
 function user_data() {
