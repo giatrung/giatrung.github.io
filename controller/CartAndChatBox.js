@@ -264,9 +264,7 @@ function Clear(soluong) {
 //=============================Lọc sản phẩm==========================
 
 function switchcase() {
-    let key = localStorage.getItem('pick');
-    console.log(key);
-    key = parseInt(key);
+    let key = localStorage.getItem('pick')? parseInt(localStorage.getItem('pick')):0;
     switch (key) {
         case 1: {
             filter(1);
