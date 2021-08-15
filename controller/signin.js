@@ -41,7 +41,7 @@ function dangnhap() {
         }
     }
     document.getElementById("signin-error").textContent = "SDT hoặc mật khẩu chưa đúng!";
-
+    document.getElementById("password-signin").value="";
 }
 function signout() {
     let info = localStorage.getItem("account") ? JSON.parse(localStorage.getItem("account")) : [];
