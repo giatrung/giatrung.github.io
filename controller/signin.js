@@ -18,14 +18,6 @@ function dangnhap() {
                 if (accounts[i].status == 1) {
                     item.push(...accounts[i].cart);
                     localStorage.setItem("items", JSON.stringify(item));
-                    // for (let j = 0; j < accounts[i].cart.length; j++) {
-                    //     let soluongs = localStorage.getItem('soluong');
-                    //     soluongs = parseInt(soluongs);
-                    //     localStorage.setItem('soluong', soluongs + accounts[i].cart[j].soluong);
-                    //     document.getElementById('dot-number').textContent = soluongs + accounts[i].cart[j].soluong;
-                    //     let tongtien = localStorage.getItem('tongtien') ? parseInt(localStorage.getItem('tongtien')) : 0;
-                    //     localStorage.setItem('tongtien', tongtien += accounts[i].cart[j].dongia);
-                    //     document.getElementById('tongtien').textContent = (tongtien += accounts[i].cart[j].dongia).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
                     }
                 }
                 for (let j = 0; j < item.length; j++) {
