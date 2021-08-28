@@ -18,6 +18,13 @@ function dangnhap() {
                 if (accounts[i].status == 1) {
                     item.push(...accounts[i].cart);
                     localStorage.setItem("items", JSON.stringify(item));
+                    let onSignIn={
+                        fname: info[i].fname,
+                        address: info[i].address,
+                        mail: info[i].mail,
+                        phone:info[i].phone
+                    };
+                    localStorage.setItem("onSignIn",JSON.stringify(onSignIn));
                     }
                 }
                 for (let j = 0; j < item.length; j++) {
