@@ -85,17 +85,6 @@ function onload() {
     document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
     display();
 }
-function user_data() {
-    let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-    let accounts = localStorage.getItem('account') ? JSON.parse(localStorage.getItem('account')) : [];
-    for (let i = 0; i < accounts.length; i++) {
-        if (accounts[i].status == 1) {
-            accounts[i].cart.push(...item);
-            console.log(accounts[i].cart);
-            localStorage["account"] = JSON.stringify(accounts);
-        }
-    }
-}
 function display(soluongs) {
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
     let tableContent = `<tr class="bg-dark text-light"><td class="col-lg-5" style="width=300px">Tất cả sản phẩm</td>
@@ -123,7 +112,7 @@ function display(soluongs) {
 
     })
     document.getElementById('modal-list').innerHTML = tableContent;
-}//end display()
+}
 display();
 onload();
 document.querySelector("#signin-button").addEventListener("click", dangnhap);
