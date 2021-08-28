@@ -18,14 +18,14 @@ function dangnhap() {
                 if (accounts[i].status == 1) {
                     item.push(...accounts[i].cart);
                     localStorage.setItem("items", JSON.stringify(item));
-                    // let onSignIn={
-                    //     fname: info[i].fname,
-                    //     address: info[i].address,
-                    //     mail: info[i].mail,
-                    //     phone:info[i].phone
-                    // };
-                    // localStorage.setItem("onSignIn",JSON.stringify(onSignIn));
-                    // }
+                    let onSignIn={
+                        fname: info[i].fname,
+                        address: info[i].address,
+                        mail: info[i].mail,
+                        phone:info[i].phone
+                    };
+                    localStorage.setItem("onSignIn",JSON.stringify(onSignIn));
+                    }
                 }
                 for (let j = 0; j < item.length; j++) {
                     let soluongs = localStorage.getItem('soluong');
@@ -56,7 +56,7 @@ function signout() {
         if (info[i].status == 1) {
             info[i].status = 0;
             localStorage["account"] = JSON.stringify(info);
-            // localStorage.setItem("onSignIn",[]);
+            localStorage.setItem("onSignIn","");
             document.getElementById("status-signin").innerHTML = `Đăng nhập`;
             document.getElementById("signin").setAttribute("data-toggle", "modal");
             document.getElementById("signin").setAttribute("data-target", "#dangnhap");
