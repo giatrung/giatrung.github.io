@@ -3,7 +3,7 @@ switchcase();
 //Nếu chưa có số lượng trong giỏ hàng thì nút thanh toán sẽ disable
 let first = localStorage.getItem('soluong');
 first = parseInt(first);
-if (first || first>0) {
+if (first && first>0) {
     document.querySelector("#thanhtoan").disabled = false;
 }
 else {
