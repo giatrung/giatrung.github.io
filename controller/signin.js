@@ -56,6 +56,7 @@ function signout() {
         if (info[i].status == 1) {
             info[i].status = 0;
             localStorage["account"] = JSON.stringify(info);
+            localStorage.setItem("onSignIn",[]);
             document.getElementById("status-signin").innerHTML = `Đăng nhập`;
             document.getElementById("signin").setAttribute("data-toggle", "modal");
             document.getElementById("signin").setAttribute("data-target", "#dangnhap");
