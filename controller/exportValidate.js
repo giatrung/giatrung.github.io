@@ -1,3 +1,15 @@
+function SignIn(){
+    let SignIn= localStorage.getItem("onSignIn")
+    SignIn=JSON.parse(SignIn);
+    if(SignIn)
+    {
+        document.getElementById('name').value=SignIn.fname;
+        document.getElementById('email').value=SignIn.mail;
+        document.getElementById('phone').value=SignIn.phone;
+        document.getElementById('address').value=SignIn.address;
+    }
+}
+SignIn()
 function validate() {
     let fullname = document.getElementById('name').value
     let email = document.getElementById('email').value
