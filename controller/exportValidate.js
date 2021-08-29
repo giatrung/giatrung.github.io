@@ -1,6 +1,5 @@
 function SignIn(){
-    let SignIn= localStorage.getItem("onSignIn")
-    SignIn=JSON.parse(SignIn);
+    let SignIn= localStorage.getItem("onSignIn")?JSON.parse(localStorage.getItem("onSignIn")):undefined;
     if(SignIn)
     {
         document.getElementById('name').value=SignIn.fname;
