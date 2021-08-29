@@ -14,35 +14,32 @@ function dangnhap() {
 
             let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
             let accounts = localStorage.getItem('account') ? JSON.parse(localStorage.getItem('account')) : [];
-            for (let i = 0; i < accounts.length; i++) {
-                if (accounts[i].status == 1) {
-                    item.push(...accounts[i].cart);
+            for (let j = 0; j < accounts.length; j++) {
+                if (accounts[j].status == 1) {
+                    item.push(...accounts[j].cart);
                     localStorage.setItem("items", JSON.stringify(item));
                     let onSignIn={
-                        fname: info[i].fname,
-                        address: info[i].address,
-                        mail: info[i].mail,
-                        phone:info[i].phone
+                        fname: info[j].fname,
+                        address: info[j].address,
+                        mail: info[j].mail,
+                        phone:info[j].phone
                     };
                     localStorage.setItem("onSignIn",JSON.stringify(onSignIn));
                     }
                 }
-                for (let j = 0; j < item.length; j++) {
+            for (let x = 0; x < item.length; x++) {
                     let soluongs = localStorage.getItem('soluong');
                     soluongs = parseInt(soluongs);
-                    localStorage.setItem('soluong', soluongs + item[j].soluong);
-                    
+                    localStorage.setItem('soluong', soluongs + item[x].soluong);
                     let tongtien = localStorage.getItem('tongtien') ? parseInt(localStorage.getItem('tongtien')) : 0;
-                    localStorage.setItem('tongtien', tongtien + item[j].dongia);
-                    document.getElementById('tongtien').innerHTML = (tongtien += item[j].dongia).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+                    localStorage.setItem('tongtien', tongtien + item[x].dongia);
+                    // document.getElementById('tongtien').innerHTML = (tongtien + item[x].dongia).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
             }
             
             let soluongs = localStorage.getItem('soluong');
-            soluongs=parseInt(soluongs);
             document.getElementById('dot-number').textContent = soluongs;
-            let tongtien = localStorage.getItem('tongtien') ? parseInt(localStorage.getItem('tongtien')) : 0;
+            let tongtien = localStorage.getItem('tongtien');
             document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-
             display();
             window.location.href = "./index.html";
             return;

@@ -159,6 +159,14 @@ function plus(id) {
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
     item[id].soluong += 1;
     localStorage['items'] = JSON.stringify(item);
+    let accounts= localStorage.getItem('account')?JSON.parse(localStorage.getItem('account')) : [];
+    for(let i=0;i<accounts.length;i++) {
+        if(accounts[i].status==1)
+        {
+            accounts[i].cart[id].soluong++;
+        }
+    }
+    localStorage['account']=JSON.stringify(accounts);
     let soluongs = localStorage.getItem('soluong');
     soluongs = parseInt(soluongs);
     localStorage.setItem('soluong', soluongs + 1);
@@ -177,6 +185,14 @@ function plus(id) {
  */
 function minus(id) {
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+    let accounts= localStorage.getItem('account')?JSON.parse(localStorage.getItem('account')) : [];
+    for(let i=0;i<accounts.length;i++) {
+        if(accounts[i].status==1)
+        {
+            accounts[i].cart[id].soluong--;
+        }
+    }
+    localStorage['account']=JSON.stringify(accounts);
     if (item[id].soluong > 1) {
         item[id].soluong -= 1;
         localStorage['items'] = JSON.stringify(item);
