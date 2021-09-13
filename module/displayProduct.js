@@ -11,7 +11,7 @@ let list =() =>{
         <div class="card-body bg-light card-body-product">
             <div class="row">
                 <div class="col-lg-5 bg-white">
-                    <img src="../image/logo.png" alt="" style="width:60%;height:20px;">
+                    <img src="image/logo.png" alt="" style="width:60%;height:20px;">
                     <img src="${item.hinh}" alt="">
                     <div class="rate text-center" id="rate">
                         <span class="fa fa-star checked"></span>
