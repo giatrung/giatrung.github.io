@@ -1,3 +1,4 @@
+import {display} from './display.js';
 function dangnhap() {
     let phone = document.getElementById("phone-signin").value;
     let pass = document.getElementById("password-signin").value;
@@ -65,6 +66,7 @@ function signout() {
         }
     }
 }
+
 function onload() {
     let info = localStorage.getItem("account") ? JSON.parse(localStorage.getItem("account")) : [];
     for (let i = 0; i < info.length; i++) {
@@ -82,35 +84,5 @@ function onload() {
     document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
     display();
 }
-function display(soluongs) {
-    let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-    let tableContent = `<tr class="bg-dark text-light"><td class="col-lg-5" style="width=300px">Tất cả sản phẩm</td>
-        <td class='col-lg-2'>Hinh ảnh</td>
-        <td class='col-lg-2'>Số lượng</td>
-        <td class='col-lg-2'>Thành tiền</td>
-        <td class='col-lg-1'><button class='btn bg-light' onclick="Clear(${soluongs})"><i class='fa fa-trash' aria-hidden='true'></i></button></td>
-        </tr>`
-    // array.foreach((value,index)=>function)
-    // duyệt qua các phần tử và xuất ra màn hình các sản phẩm có trong mảng item
-    item.forEach((items, index) => {
-        let id = index;
-        index++;
-        tableContent += `<tr><td class="col-lg-5" style="width=300px">${items.sanpham}</td>
-        <td class='col-lg-2'><img style="width:70px;height:70px" src="${items.hinhanh}"></td>
-        <td class='col-lg-2'>
-        <button type="button" class="btn btn-outline-secondary btn-number" style="width: 20px;padding: 0px;"   onClick="minus(${id})">
-        <span class="fa fa-minus"></span>
-        </button> ${items.soluong} <button type="button" class="btn btn-outline-secondary btn-number" style="width: 20px;padding: 0px;" onClick="plus(${id})">
-        <span class="fa fa-plus"></span>
-        </button></td>
-        <td class='col-lg-2'>${(items.dongia * items.soluong).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}đ</td>
-        <td class='col-lg-1'><button class='btn bg-light' onclick="Xoa(${id})"><i class='fa fa-trash' aria-hidden='true'></i></button></td>
-        </tr>`;
-
-    })
-    document.getElementById('modal-list').innerHTML = tableContent;
-}
-display();
 onload();
-document.querySelector("#signin-button").addEventListener("click", dangnhap);
-document.querySelector("#exit").addEventListener("click", signout);
+export {dangnhap,signout}

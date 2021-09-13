@@ -1,6 +1,3 @@
-body{
-    width:100%;
-}
 nav #nav-search{
     width: 20%;
     margin-right: 10px;
@@ -8,24 +5,23 @@ nav #nav-search{
 nav ul li{
     margin-right: 90px;
 }
-
+.covid-ribbon{
+    height: 40px;
+    line-height: 40px;
+}
 #signin{
     cursor: pointer;
 }
 #signin:hover{
     text-decoration:underline;
 }
-.covid-ribbon{
-    height: 40px;
-    line-height: 40px;
-}
 .carousel-inner img {
     width: 100%;
     height: 490px;
 }
 .carousel-indicators li {
-    width: 13px;
-    height: 13px;
+    width: 10px;
+    height: 10px;
     border-radius: 100%;
   }
   .carousel-control-prev-icon {
@@ -44,24 +40,19 @@ nav ul li{
 .carousel-control-next{
     justify-content:flex-end;
 }
-#modal-size{
-    width: 900px;
-    transform: translateX(-200px);
-}
-#modal-list tr td{
-    border: 2px solid gray;
-}
-#modal-list1 tr td{
-    border: 2px solid gray;
-}
 /*===================================================*/
 .divider{
     width: 100%;
     height:50px
 }
 .card{
+    margin-bottom: 4%;
     width: 400px !important;
     border: 0px;
+    height: 442px;
+}
+.card-body{
+    height: 444px !important;
 }
 .card-body img{
     width: 100%;
@@ -71,17 +62,16 @@ nav ul li{
     font-weight:normal;
     margin-top: 5%;
     color:black;
+    font-size: 19px;
 }
-.card-body img{
-    box-shadow: 2px 4px 5px silver;
+.card-body h5{
+    font-size: 19.5px;
 }
 .card a{
     text-decoration: none;
 }
-
 .product .card-columns{
     border-bottom: 1px solid rgb(235, 233, 233);
-
 }
 .product .card{
     transition: all 0.5s;
@@ -102,6 +92,7 @@ nav ul li{
     border: 0px;
 }
 .icon{
+    margin-top:1%;
     height:200px;
     padding:40px 0px;
 }
@@ -143,20 +134,172 @@ footer{
     width:100%;
 }
 /* =========================iPhone========================================*/
-@media screen and (max-width:565px) {
-    nav #nav-search{
-        width: 300px !important;
-        margin-right: 10px;
-    }
+.iphone-product .card-columns{
+    display: flex;
+    justify-content:center;
+}
+.iphone-product .card-columns img{
+    height:140px;
+}
+.iphone-product .card-columns .card-body{
+    height:380px;
 }
 
-/* ==============CHAT-POPUP============ */
+/* .iphone-product .card-columns .card-body .dot{
+    height:25px;
+    width:25px;
+    border-radius:50%;
+    display:inline-block;
+} */
+.iphone-product .card-columns .card-body .checked{
+    color: orange;
+}
+.iphone-product .card-columns a{
+    color: black
+}
+.card-body-product{
+    box-shadow: 2px 2px 10px silver;
+}
+
+/* .iphone-product .card-body:hover{
+    transform: scale(1.07);
+    transition:0.5s;
+ } */
+ .tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: silver;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 0%;
+    left: 50%;
+    margin-left: -60px;
+    
+    /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+    opacity: 0;
+    transition: opacity 0.5s;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+ /********************************/
+ .picture #bigger {
+     width: 100%;
+     margin-bottom: 3%;
+ }
+ .picture .smaller {
+    width: 19%;
+    height: 15%;
+}
+.picture .smaller:hover {
+    cursor: pointer;
+    border: 1px solid rgb(219, 219, 219)
+}
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 3px;
+  }
+  .dot:hover{
+      cursor: pointer;
+  }
+.ipad-product #storage{
+    margin-top: 5px;
+}
+.info button{
+    border:1px solid;
+}
+.info #storage{
+    line-height:50px;
+}
+.other img{
+    width:100%;
+    margin-bottom: 10px;
+}
+
+#modal-size{
+    width: 900px;
+    transform: translateX(-200px);
+}
+#modal-list tr td{
+    border: 2px solid gray;
+}
+#modal-list1 tr td{
+    border: 2px solid gray;
+}
+@media screen and (max-width:565px) {
+    nav #nav-search{
+        width: 300px;
+        margin-right: 10px;
+    }
+    .navbar-toggler{
+        margin-left: auto;
+    }
+    .covid-ribbon{
+        height: 85px!important;
+        font-size:small;
+    }
+    .covid-ribbon span{
+        margin-left: 10px !important;
+    }
+    .iphone-product .row{
+        justify-content: center!important;
+    }
+    .iphone-product .card-body{
+        width: 50% !important;
+        margin: auto;
+    }
+    .iphone-product .card{
+        height:650px;
+    }
+    .iphone-product a{
+        text-decoration: none;
+    }
+    .card{
+        margin-bottom: 4%;
+        width: 400px !important;
+        border: 0px;
+        height:770px!important;
+        margin-top: 25px;
+    }
+}
+.open-button {
+    background-color: #555;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+  }
+  
+
+  /* ==============CHAT-POPUP============ */
   /* The popup chat - hidden by default */
   .chat-popup {
     display: none;
     position: fixed;
     bottom: 0;
     right: 15px;
+    border: 3px solid #f1f1f1;
     z-index: 9;
   }
   
@@ -186,6 +329,7 @@ footer{
   
   /* Set a style for the submit/send button */
   .form-container .btn {
+    background-color: #04AA6D;
     color: white;
     padding: 16px 20px;
     border: none;
@@ -196,13 +340,14 @@ footer{
   }
   
   /* Add a red background color to the cancel button */
-  /* .form-container .cancel {
-    background-color: rgb(255, 166, 0);
-  } */
+  .form-container .cancel {
+    background-color: red;
+  }
   
   /* Add some hover effects to buttons */
   .form-container .btn:hover, .open-button:hover {
-    opacity: 0.5;
+    opacity: 1;
   }
-
-
+  #chatbox #traloi{
+      transition: 2s;
+  }

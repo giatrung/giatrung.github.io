@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <title>Liên hệ</title>
 </head>
+
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <i class="fab fa-apple navbar-brand" aria-hidden="true" style="font-size:30px">
@@ -40,7 +41,7 @@
             <button id="search" type="button" class="btn btn-success btn-search" data-toggle="modal"
                 data-target="#myModal" onclick="mySearch()">Tìm kiếm
             </button>
-             
+
             <!-- The Modal -->
             <div class="modal" id="myModal">
                 <div class="modal-dialog">
@@ -74,7 +75,7 @@
                         nhập</span></a>
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu">
-                    <li><a id="exit" href="./index.html">Thoát</a></li>
+                    <li><a style="color:black;" id="exit" href="./index.html">Thoát</a></li>
                 </ul>
             </div>
 
@@ -133,7 +134,8 @@
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <span>Tổng tiền: <span id="tongtien"><b>0</b></span>đ </span>
-                    <button id="thanhtoan" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Thanh toán</button>
+                    <button id="thanhtoan" type="button" class="btn btn-primary" data-toggle="modal"
+                        data-target="#myModal3">Thanh toán</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
@@ -175,7 +177,7 @@
                         <div class="form-group">
                             <label for="hinhthuc">Hình thức mua hàng:</label> <br>
                             <input type="radio" name="shop" id="home" checked>Mua tại cửa hàng
-                            <input style="margin-left: 10px;" type="radio" name="shop" id="store">Ship COD
+                            <input style="margin-left: 10px;" type="radio" name="shop" id="module">Ship COD
                             <br>
                             <p style="color:red" id="hinhthuc-error"></p>
                         </div>
@@ -187,7 +189,8 @@
                 <div type="submit" class="modal-footer" style="text-align: center; display: block;">
                     <button id="btn-dathang" type="button" class="btn btn-primary">Đặt
                         hàng</button>
-                    <a href="./index.html" type="button" class="btn btn-success" id="continue" hidden >Tiếp tục mua sắm</a>
+                    <a href="./index.html" type="button" class="btn btn-success" id="continue" hidden>Tiếp tục mua
+                        sắm</a>
                     <p id="dathang" style="color:rgb(9, 201, 9)"></p>
                 </div>
             </div>
@@ -201,9 +204,11 @@
             <div class="col-lg-6 col-sm-12">
                 <h4>TrunkApple Sài Gòn</h4>
                 <p class="mb-0">36 Trịnh Đình Thảo P.Hòa Thạnh Q.Tân Phú, Hồ Chí Minh</p>
-                <p  class="mb-0">Giờ mở cửa: 9:00 - 21:00</p>
-                <p  class="mb-4">Hotline: 0388.888.999</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4918356610237!2d106.63341331436035!3d10.773591892323488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ea3dad6b111%3A0x8f81ed645c6eadc4!2zMzYgVHLhu4tuaCDEkMOsbmggVGjhuqNvLCBQaMO6IFRydW5nLCBUw6JuIFBow7osIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1625286178436!5m2!1sen!2s" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <p class="mb-0">Giờ mở cửa: 9:00 - 21:00</p>
+                <p class="mb-4">Hotline: 0388.888.999</p>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.4918356610237!2d106.63341331436035!3d10.773591892323488!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752ea3dad6b111%3A0x8f81ed645c6eadc4!2zMzYgVHLhu4tuaCDEkMOsbmggVGjhuqNvLCBQaMO6IFRydW5nLCBUw6JuIFBow7osIFRow6BuaCBwaOG7kSBI4buTIENow60gTWluaCwgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1625286178436!5m2!1sen!2s"
+                    width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
             <div class="col-lg-6 col-sm-12">
                 <img style="height:385px" src="image/lienhe.jpg" alt="">
@@ -223,7 +228,7 @@
                     <h3>Thông tin & Liên hệ</h3>
                     <a href="#">Giới thiệu</a> <br>
                     <p>Gọi tư vấn: <b>1900.6626</b></p>
-                    <p>KH Doanh nghiệp & Đối tác <b>0268.888.999 (Mr.Vũ Kute  <i class="fa fa-heart" aria-hidden="true"></i>)</b></p>
+                    <p>KH Doanh nghiệp & Đối tác <b>0268.888.999</b></p>
                     <p>Phản ánh và góp ý: <b>0288.888.666 (Mr.Trung)</b></p>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -237,15 +242,15 @@
             </div>
         </div>
     </footer>
-  
+
     <!-- <script type="module">
         import { fnameFunction, mailFunction, phoneFunction, diachiFunction } from './iPhone/exportOnBlur.js';
     </script> -->
-    <script type="module" src="./controller/import.js"></script>
-    <script type="text/javascript" src="controller/CartAndChatBox.js"></script>
-    <script type="text/javascript" src="controller/javascript.js"></script>
-    <script type="text/javascript" src="controller/signin.js"></script>
+    <script type="module" src="./module/import.js"></script>
+    <!-- <script type="text/javascript" src="module/Cart.js"></script>
+    <script type="text/javascript" src="module/signin.js"></script> -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>

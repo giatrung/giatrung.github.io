@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
-    <title>Sản phẩm Apple</title>
+    <title>Trang chủ</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@
     <!-- ===========================NAVIGATION====================== -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
         <i class="fab fa-apple navbar-brand" aria-hidden="true" style="font-size:30px">
-                TrunkApple</i>
+            TrunkApple</i>
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -41,7 +41,7 @@
             </ul>
             <input id="nav-search" type="text" class="form-control" placeholder="Bạn muốn tìm gì?" required>
             <button id="search" type="button" class="btn btn-success btn-search" data-toggle="modal"
-                data-target="#myModal" >Tìm kiếm</button>
+                data-target="#myModal" onclick="mySearch()">Tìm kiếm</button>
 
             <!-- The Modal -->
             <div class="modal" id="myModal">
@@ -65,6 +65,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </nav>
     <div class="covid-ribbon text-center bg-light">
         <span style="margin-left: 220px;">Shop online and get Specialist help, free no-contact delivery, and
@@ -75,14 +76,15 @@
                 <a id="signin" data-toggle="modal" data-status="0" data-target="#dangnhap"><span id="status-signin">Đăng
                         nhập</span></a>
                 <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a style="color:black;" id="exit" href="./index.html">Thoát</a></li>
+                <ul class="dropdown-menu" style="color: black;">
+                    <li><a href="./signup.html">Đổi mật khẩu</a></li>
+                    <li><a style="color:black;" id="exit" href="index.html">Thoát</a></li>
                 </ul>
             </div>
-            <!-- data-toggle="modal" data-target="#myModal2 -->
+
             <!-- Button Cart -->
-            <button  id="cart-button" class="btn btn-secondary d-inline" data-toggle="modal" data-target="#myModal2"
-                style="display: block;margin: 1px 17px 0px 0px;">
+            <button id="cart-button" data-toggle="modal" data-target="#myModal2" class="btn btn-secondary d-inline"
+                style="display: block;margin: 1px 17px 1px 0px;">
                 <i class="fas fa-cart-arrow-down d-inline " style="padding-right:3px;width: 70px;font-size: 15px;"
                     aria-hidden="true">
                 </i>cart <span id="dot-number" style="color: white"> 0</span>
@@ -118,41 +120,15 @@
         </div>
     </div>
     <!-- ===================================================================== -->
-    <!-- ===========================IPHONE PRODUCT====================== -->
-    <div id="iphone-product" class="container-fluid iphone-product mt-3 mb-3">
-     
-                <!-- ===============================iPhone============================= -->
-               
-           
-    </div>
-    <div id="product-modal-detail">
+    <!-- ===========================MODAL GIỎ HÀNG====================== -->
+    <table id="modal-list">
         
-    </div>
-    <!-- The Modal of Cart -->
-    <div class="modal" id="myModal2">
-        <div class="modal-dialog">
-            <div id="modal-size" class="modal-content">
-                <!-- Modal Header -->
-                <div class="modal-header">
-                    <h4 id="title-modal" class="modal-title">Giỏ hàng của bạn</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-
-                <!-- Modal body -->
-                <div id="body-modal" class="modal-body  ">
-                    <table id="modal-list" class="text-center">
-                    </table>
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <span>Tổng tiền: <span id="tongtien"><b>0</b></span>đ </span>
-                    <button id="thanhtoan" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3"
-                    >Thanh toán</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
-                </div>
-            </div>
-        </div>
+    </table>
+    <div>
+        <span>Tổng tiền: <span id="tongtien"><b>0</b></span>đ </span>
+        <button id="thanhtoan" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal3">Thanh
+            toán</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
     </div>
     <div class="modal" id="myModal3">
         <div class="modal-dialog">
@@ -200,19 +176,21 @@
                 <!-- Modal footer -->
 
                 <div type="submit" class="modal-footer" style="text-align: center; display: block;">
-                    <button id="btn-dathang" type="button" class="btn btn-primary" >Đặt
+                    <button id="btn-dathang" type="button" class="btn btn-primary">Đặt
                         hàng</button>
-                    <a href="./index.html" type="button" class="btn btn-success" id="continue" hidden >Tiếp tục mua sắm</a>
+                    <a href="./index.html" type="button" class="btn btn-success" id="continue" hidden>Tiếp tục mua
+                        sắm</a>
                     <p id="dathang" style="color:rgb(9, 201, 9)"></p>
                 </div>
             </div>
         </div>
     </div>
-     <!-- ===================================================================== -->
+
+    <!-- ===================================================================== -->
     <!-- ===========================FOOTER====================== -->
     <footer>
         <div class="container-fluid footer">
-            <a href="./index.html"><img src="./image/Untitled.png" alt="" style="height: 80px;" alt=""></a>
+            <a href="index.html"><img src="/image/Untitled.png" alt="" style="height: 80px;"></a>
             <p>Là chuỗi siêu thị được thành lập từ 2010 tại Hồ Chí Minh, sau đó tái cấu trúc vào 2016 và thuộc quyền sở
                 hữu của công ty Hesman, TrunkApple chính thức trở thành đại lý ủy quyền Apple (Apple Authorized
                 Reseller) từ tháng 9/2020. Với kinh nghiệm và đam mê sản phẩm Apple chúng tôi mong muốn đem trải
@@ -223,49 +201,33 @@
                     <h3>Thông tin & Liên hệ</h3>
                     <a href="#">Giới thiệu</a> <br>
                     <p>Gọi tư vấn: <b>1900.6626</b></p>
-                    <p>KH Doanh nghiệp & Đối tác <b>0268.888.999 </b></p>
+                    <p>KH Doanh nghiệp & Đối tác <b>0268.888.999 ( Kute <i class="fa fa-heart"
+                                aria-hidden="true"></i>)</b></p>
                     <p>Phản ánh và góp ý: <b>0288.888.666 (Mr.Trung)</b></p>
                 </div>
                 <div class="col-lg-6 col-md-12">
-                    <img src="./image/Thongbao.png" alt=""><br>
-                    <img class="options" src="./image/mastercard.jpg" alt="">
-                    <img class="options" src="./image/visa.jpg" alt="">
-                    <img class="options" src="./image/tienmat.jpg" alt="">
-                    <img class="options" src="./image/chuyenkhoan.jpg" alt="">
-                    <img class="options" src="./image/atm.jpg" alt="">
+                    <img src="/image/Thongbao.png" alt=""><br>
+                    <img class="options" src="/image/mastercard.jpg" alt="">
+                    <img class="options" src="/image/visa.jpg" alt="">
+                    <img class="options" src="/image/tienmat.jpg" alt="">
+                    <img class="options" src="/image/chuyenkhoan.jpg" alt="">
+                    <img class="options" src="/image/atm.jpg" alt="">
                 </div>
             </div>
         </div>
     </footer>
-     <!-- ===================================================================== -->
-    <!-- ===========================POP UP CHAT====================== -->
-    <button class="open-button" id="openForm" style="background-color: #0099FF;border-radius: 50%;width: 79px;padding: 19px 0px;"><i class="fab fa-facebook-messenger" style="font-size: 40px;"></i></button>
-    <div class="chat-popup" id="myForm" style="width: 400px;">
-        <form action="/action_page.php" class="form-container" style="box-shadow: 2px 7px 12px grey; max-width: 400px;">
-            <h1>Chat với shop</h1>
-            <label for="msg"><b>Message</b></label>
-            <!-- <textarea class="display-chatting m-0" name="msg" disabled>Xin chào quý khách!
-            </textarea> -->
-            <div id="chatbox" style="height: 350px;border: 1px solid silver;overflow-y:auto;margin-top: auto; margin-bottom:5px;">
-                <p style="float:left;border-radius: 10px 10px 10px 0px;width: 51%;
-padding-left: 5px;background-color: rgb(240, 240, 240);color:black;margin: 5px">TrunkApple xin kính chào quý Khách!</p>
-            </div>
-            <input id="message" type="text" class="form-control mb-4" placeholder="Nhập tin nhắn">
-            <button id="gui" type="button" class="btn" style="background-color: #0099FF;">Gửi</button>
-            <button type="button" class="btn cancel" id="closeForm" style="background-color: #376c8f;">Đóng</button>
-        </form>
-    </div>
-    
-    <!-- ===================================================================== -->
-    <!-- ===========================SCRIPT====================== -->
-    
+    <!-- <script type="module">
+        import { fnameFunction, mailFunction, phoneFunction, diachiFunction } from './module/exportOnBlur.js';
+    </script> -->
+    <!-- <script type="text/javascript" src="javascript.js"></script> -->
     <script type="module" src="./module/import.js"></script>
+
+    <!-- <script type="text/javascript" src="./module/signin.js"></script> -->
+    <!-- <script type="module" src="./module/displayAndChatBox.js"></script> -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
-
 </body>
 
 </html>

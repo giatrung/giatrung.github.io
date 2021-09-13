@@ -15,7 +15,7 @@
     <!-- ===================================================================== -->
     <!-- ===========================NAVIGATION====================== -->
     <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-        <i class="fab fa-apple navbar-brand" aria-hidden="true" style="font-size:30px">
+        <i class="fab fa-apple navbar-brand" aria-hidden="true" >
             TrunkApple</i>
         <!-- Toggler/collapsibe Button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -40,7 +40,7 @@
             </ul>
             <input id="nav-search" type="text" class="form-control" placeholder="Bạn muốn tìm gì?" required>
             <button id="search" type="button" class="btn btn-success btn-search" data-toggle="modal"
-                data-target="#myModal" onclick="mySearch()">Tìm kiếm</button>
+                data-target="#myModal">Tìm kiếm</button>
 
             <!-- The Modal -->
             <div class="modal" id="myModal">
@@ -76,8 +76,7 @@
                         nhập</span></a>
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu"  style="color: black;">
-                    <li><a href="./signup.html">Đổi mật khẩu</a></li>
-                    <li><a id="exit" href="index.html">Thoát</a></li>
+                    <li><a style="color:black;" id="exit" href="index.html">Thoát</a></li>
                 </ul>
             </div>
 
@@ -185,7 +184,7 @@
                         <div class="form-group">
                             <label for="hinhthuc">Hình thức mua hàng:</label> <br>
                             <input type="radio" name="shop" id="home" checked>Mua tại cửa hàng
-                            <input style="margin-left: 10px;" type="radio" name="shop" id="store">Ship COD
+                            <input style="margin-left: 10px;" type="radio" name="shop" id="module">Ship COD
                             <br>
                             <p style="color:red" id="hinhthuc-error"></p>
                         </div>
@@ -244,7 +243,7 @@
 
         <div class="card-columns">
             <div class="card">
-                <a id="iPhonePrD" href="./iPhone.html" onclick="pick(1)">
+                <a class="pick" href="./iPhone.html">
                     <div class="card-body text-center">
                         <img src="image/shopdunkiphone.jpg" alt="">
                         <h4>iPhone</h4>
@@ -252,7 +251,7 @@
                 </a>
             </div>
             <div class="card ">
-                <a href="./iPhone.html" onclick="pick(2)">
+                <a class="pick" href="./iPhone.html" ">
                     <div class="card-body text-center">
                         <img src="image/ipad3.jpg" alt="">
                         <h4>iPad</h4>
@@ -260,7 +259,7 @@
                 </a>
             </div>
             <div class="card ">
-                <a href="./iPhone.html" onclick="pick(3)">
+                <a class="pick" href="./iPhone.html">
                     <div class="card-body text-center">
                         <img src="image/shopdunkmac.jpg" alt="">
                         <h4>Macbook</h4>
@@ -324,8 +323,7 @@
                     <h3>Thông tin & Liên hệ</h3>
                     <a href="#">Giới thiệu</a> <br>
                     <p>Gọi tư vấn: <b>1900.6626</b></p>
-                    <p>KH Doanh nghiệp & Đối tác <b>0268.888.999 (Mr.Vũ Kute <i class="fa fa-heart"
-                                aria-hidden="true"></i>)</b></p>
+                    <p>KH Doanh nghiệp & Đối tác <b>0268.888.999</b></p>
                     <p>Phản ánh và góp ý: <b>0288.888.666 (Mr.Trung)</b></p>
                 </div>
                 <div class="col-lg-6 col-md-12">
@@ -340,17 +338,26 @@
         </div>
     </footer>
     <!-- <script type="module">
-        import { fnameFunction, mailFunction, phoneFunction, diachiFunction } from './controller/exportOnBlur.js';
+        import { fnameFunction, mailFunction, phoneFunction, diachiFunction } from './module/exportOnBlur.js';
     </script> -->
     <!-- <script type="text/javascript" src="javascript.js"></script> -->
-    <script type="module" src="./controller/import.js"></script>
-    <script type="text/javascript" src="./controller/CartAndChatBox.js"></script>
-    <script type="text/javascript" src="./controller/javascript.js"></script>
-    <script type="text/javascript" src="./controller/signin.js"></script>
+    
+    <script type="module" src="./module/import.js"></script>
+    
+    <!-- <script type="text/javascript" src="./module/signin.js"></script> -->
+    <!-- <script type="module" src="./module/displayAndChatBox.js"></script> -->
     <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"
+        integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+   
+
 </body>
 
 </html>

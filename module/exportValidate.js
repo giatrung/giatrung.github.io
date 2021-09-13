@@ -19,8 +19,8 @@ function validate() {
         hinhthuc = document.getElementById('home').value
         document.getElementById('hinhthuc-error').innerHTML = '';
     }
-    else if (document.getElementById('store').checked) {
-        hinhthuc = document.getElementById('store').value
+    else if (document.getElementById('module').checked) {
+        hinhthuc = document.getElementById('module').value
         document.getElementById('hinhthuc-error').innerHTML = '';
     }
     else {
@@ -151,5 +151,5 @@ function emailContent(){
     </table>`;
     return html;
 }
-document.querySelector('#btn-dathang').addEventListener('click', validate);
+// document.querySelector('#btn-dathang').addEventListener('click', validate);
 export{validate};
