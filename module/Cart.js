@@ -60,16 +60,17 @@ function list(product, soluongs) {
     //Nếu có dữ liệu trong localStorage thì sẽ ép vể kiểu JSON
     let temp = 0;
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-    //Thêm các đối tượng sản phẩm vào trong mảng item bằng hàm push
+
+    //Nếu có sản phẩm cùng tên trong giỏ hàng thì tăng số lượng của sản phẩm đó lên
     for (let i = 0; i < item.length; i++) {
         if (item[i].sanpham.localeCompare(product.ten) == 0) {
             temp = 1;
-            console.log(item[i].sanpham.localeCompare(product.ten));
             item[i].soluong++;
             localStorage["items"] = JSON.stringify(item);
             break;
         }
     }
+    //nếu chưa có sản phẩm trong item thì thêm vào
     if (temp == 0) {
         item.push({
             id: product.id,
@@ -81,7 +82,9 @@ function list(product, soluongs) {
         localStorage.setItem('items', JSON.stringify(item));
         console.log("thanhcong");
     }
-    temp=0;
+    temp=0; //reset temp
+
+    //Thêm sản phẩm vào cart của accounts
     let accounts = localStorage.getItem('account') ? JSON.parse(localStorage.getItem('account')) : [];
     for (let i = 0; i < accounts.length; i++) {
         for (let j = 0; j < accounts[i].cart.length; j++) {
@@ -143,10 +146,12 @@ export function plus(id) {
         }
     }
     localStorage['account']=JSON.stringify(accounts);
+    //Tăng số lượng giỏ hàng
     let soluongs = localStorage.getItem('soluong');
     soluongs = parseInt(soluongs);
     localStorage.setItem('soluong', soluongs + 1);
     document.getElementById('dot-number').textContent = soluongs + 1;
+    //Tăng tổng tiền
     let tongtien = localStorage.getItem('tongtien');
     tongtien = parseInt(tongtien);
     localStorage.setItem('tongtien', tongtien + item[id].dongia);
@@ -203,22 +208,22 @@ export function Xoa(id) {
     let yes=confirm("Bạn có chắc muốn xoá sản phẩm không?")
     if(yes==true) {
         let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+        //Giảm số lượng
         let soluong = localStorage.getItem('soluong');
-       localStorage.setItem('soluong', soluong - item[id].soluong);
+        localStorage.setItem('soluong', soluong - item[id].soluong);
         document.getElementById('dot-number').innerHTML = soluong - item[id].soluong;
+        
+        //Giảm tổng tiền
         let tongtien = localStorage.getItem('tongtien');
         tongtien = parseInt(tongtien);
         tongtien -= (item[id].dongia * item[id].soluong);
         localStorage.setItem('tongtien', tongtien);
         document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+        item.splice(id, 1);
+        localStorage.setItem('items', JSON.stringify(item));
         if (tongtien == 0) {
             document.querySelector("#thanhtoan").disabled = true;
         }
-        item.splice(id, 1);//splicedùng để xóa phần từ'//dang xoa mang // bay gio la xoa theo id
-        // item = item.filter(a =>a.id != id);
-    
-        localStorage.setItem('items', JSON.stringify(item));
-        
         let accounts = localStorage.getItem('account')? JSON.parse(localStorage.getItem('account')) : [];
         accounts.forEach((account)=>{
             if(account.status==1)
@@ -246,6 +251,8 @@ export function Clear() {
     item.splice(0, item.length);
     localStorage.setItem('items', JSON.stringify(item));
     localStorage.setItem('tongtien', 0);
+
+    //Xoá tất cả sản phẩm trong giỏ hàng của user
     let accounts = localStorage.getItem('account')? JSON.parse(localStorage.getItem('account')) : [];
     accounts.forEach((account)=>{
         account.cart=[];

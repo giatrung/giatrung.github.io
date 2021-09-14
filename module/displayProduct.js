@@ -1,8 +1,7 @@
-import { products } from "./product.js";
-let list =() =>{
-
-    let temp='';
-    products.forEach((item,index)=>{
+// import { products } from "./product.js";
+export let list =(key) =>{
+    let temp=``;
+    key.forEach((item,index)=>{
         let id=index+1;
         index++;
         temp+=`
@@ -23,11 +22,11 @@ let list =() =>{
                     <p style="font-size:smaller; text-align:center;">656 đánh giá</p>
                 </div>
                 <div class="content bg-light col-lg-7">
-                    <h5 id="name-product1">iPhone 12 chính hãng VN/A(Full VAT)(128GB)</h5>
+                    <h5 id="name-product1">${item.ten}</h5>
                     <p style="font-size: 13px ;text-decoration-line: line-through; text-align: left;margin: 0 0 0 0">
-                        9.990.000đ
+                        ${item.giaGoc.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}đ
                     </p>
-                    <h4 id="dongia1" style="color: red;margin:0px;">7.990.000đ</h4>
+                    <h4 id="dongia1" style="color: red;margin:0px;">${item.gia.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}đ</h4>
         
                     <p style="font-size:smaller;margin-bottom: 2px;margin-top: 10px;"><b>Cấu hình:</b>
                     </p>
@@ -42,8 +41,8 @@ let list =() =>{
                 </div>
         
                 <div class="col-lg-12">
-                    <p class="mt-4">iPhone 12 chính hãng VN/A(Full VAT) <br>Giá tốt nhất:
-                        <b>7.990.000đ</b>
+                    <p class="mt-4">${item.ten}<br>Giá tốt nhất:
+                        <b>${item.gia.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}đ</b>
                     </p>
                 </div>
             </div>
@@ -57,20 +56,7 @@ let list =() =>{
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 export let product = `
-<div id="title" class="title" style="width: 100%; border-bottom: 1px solid rgb(196, 196, 196) ; height: 60px;">
-        <div class="row" style="width: 100%;">
-            <h1 class="col-lg-7" style="margin: 0px 80px; font-weight: normal;">Sản phẩm</h1>
-            <div class="col-lg-3" style="padding-top: 30px;">Bộ lọc:
-                <input class="pick" type="radio" name="choose" > iPhone
-                <input class="pick" type="radio" name="choose" > iPad
-                <input class="pick" type="radio" name="choose" > Macbook
-                <input class="pick" type="radio" name="choose" checked> Tất cả
-            </div>
-        </div>
-    </div>
-<div class="container-fluid iphone-product mt-3 mb-3">
-<div class="card-columns" style="flex-wrap:wrap;" >
-               ${list()}
-</div>
+
 `;
+
 

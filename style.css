@@ -231,7 +231,13 @@ footer{
     width:100%;
     margin-bottom: 10px;
 }
-
+/* #cart-button{
+    position:fixed;
+    padding: 0;
+    top: 200px;
+    z-index: 10;
+    height:40px
+} */
 #modal-size{
     width: 900px;
     transform: translateX(-200px);

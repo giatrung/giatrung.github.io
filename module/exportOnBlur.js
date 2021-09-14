@@ -1,8 +1,4 @@
 // ===============ONBLUR VALIDATATION==================
-// document.getElementById("name").onblur = function () { fnameFunction() };
-// document.getElementById("email").onblur = function () { mailFunction() };
-// document.getElementById("phone").onblur = function () { phoneFunction() };
-// document.getElementById("address").onblur = function () { diachiFunction() };
 function fnameFunction() {
     console.log("hello");
     let fullname = document.getElementById('name').value;

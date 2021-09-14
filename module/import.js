@@ -4,12 +4,12 @@ import { mySearch } from'./exportMySearch.js';
 import {Reply, gotoBottom,openAndCloseForm,submit} from './chatbox.js';
 import { fnameFunction, mailFunction, phoneFunction, diachiFunction } from './exportOnBlur.js';
 import {rating} from './rating.js';
-import {choose,switchcase} from './filter.js';
+import {choose} from './filter.js';
 import {dangnhap,signout} from './signin.js';
 import {addToCart,onload} from './Cart.js';
 import {displayDetailproducts} from './detailProduct.js';
-import { product } from '/module/displayProduct.js';
-
+import {list} from '/module/displayProduct.js';
+import { products } from "./product.js";
 
 //***********************EVENT*******************
 document.querySelector('#btn-dathang').addEventListener('click', validate); //validate
@@ -27,20 +27,27 @@ document.querySelector("#exit").addEventListener("click", ()=>{signout()});
 //Chỉ thực hiện khi ở pathname này
 if(window.location.pathname=="/iPhone.html")
 {
-    document.getElementById("iphone-product").innerHTML=product;
-    //Chức năng gửi tin nhắn
-    document.querySelector('#gui').addEventListener('click',()=>{Reply()})
-    // let detail = document.getElementsByClassName('detail');
+    //hiển thị tất cả sản phẩm 
+    document.getElementById("iphone-product").innerHTML=list(products);
+    
     gotoBottom();
     openAndCloseForm();
     submit();
     rating();
     //Cart
     addToCart();
-    switchcase();
     displayDetailproducts();
+
+    //Bộ lộc theo sản phẩm
+    choose();
     
+    //Chức năng gửi tin nhắn
+    document.querySelector('#gui').addEventListener('click',()=>{Reply()})
 }
-choose();
+
 onload();
 //Filter
+
+
+
+
