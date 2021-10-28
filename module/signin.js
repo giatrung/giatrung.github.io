@@ -117,7 +117,7 @@ function onload() {
     reDisplayQuantityAndSumCost();
     display();
 }
-function alertSignIn(){
+export function alertSignIn(){
     Swal.fire({
         position: 'center',
         icon: 'success',

@@ -1,5 +1,5 @@
 // ===============ONBLUR VALIDATATION==================
-// import { fnameFunction, diachiFunction } from './exportOnBlur.js';
+
 document.getElementById("name-signup").onblur = function () { fnameFunction() };
 document.getElementById("email-signup").onblur = function () { mailFunction() };
 document.getElementById("phone-signup").onblur = function () { phoneFunction() };
@@ -190,7 +190,15 @@ function signup(){
         localStorage.setItem("account",JSON.stringify(accounts));
         document.getElementById('btn-dangki').hidden=true;
         document.getElementById('continue2').hidden=false;
-        document.getElementById('dangki').textContent ="Đăng kí thành công";
-        alert("Đăng kí thành công!");
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Đăng kí thành công',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          setTimeout(()=>{
+            window.open("./iPhone.html")
+          },2000)
     }
 }
