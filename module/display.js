@@ -1,5 +1,6 @@
 import {xoaEvent,plusEvent,minusEvent,Clear} from './Cart.js';
-export function display() {
+
+export let display=()=> {
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
     let tableContent = `<tr class="bg-dark text-light"><td class="col-lg-5" style="width=300px">Tất cả sản phẩm</td>
         <td class='col-lg-2'>Hinh ảnh</td>
@@ -23,11 +24,10 @@ export function display() {
          <i class='fa fa-trash' dataabc=${items.id}></i> 
         </button></td>
         </tr>`;
-
     })
     document.getElementById('modal-list').innerHTML = tableContent;
     xoaEvent();
     minusEvent();
     plusEvent();
-    document.getElementById('clear').addEventListener('click',()=>{Clear()});
+    document.getElementById('clear').addEventListener('click',Clear);
 }//end display()

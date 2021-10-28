@@ -5,14 +5,18 @@ import { products } from '/module/product.js';
 /**
  * Thêm sự kiện vào nút Mua
  */
-export function addToCart(){
+export function addToCart(x){
     let addToCart = document.getElementsByClassName("buy");
     for (let i = 0; i < addToCart.length; i++) {
         addToCart[i].addEventListener("click", () => {
-            Buy(products[i]);
+            if(x){
+                Buy(x[i]);
+            }
+            else{
+                Buy(products[i]);
+            }
         });
     }
-    
 }
 //=========================================================
 /**
@@ -20,7 +24,8 @@ export function addToCart(){
  * @param {*} product // 1 đối tượng trong mảng sản phẩm
  */
 function Buy(product) {
-    alert(`Bạn đã thêm ${product.ten} vào giỏ hàng` );
+    // alert(`Bạn đã thêm ${product.ten} vào giỏ hàng` );
+    alertAddtoCart(product.ten);
     let soluongs = localStorage.getItem('soluong');//Lấy dữ liệu từ localStorage
     soluongs = parseInt(soluongs);//Ép thành kiểu số nguyên
 
@@ -37,6 +42,15 @@ function Buy(product) {
     list(product, soluongs);
     document.querySelector("#thanhtoan").disabled = false;
 }//Buy()
+function alertAddtoCart(item){
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: `${item} đã thêm vào giỏ hàng`,
+        showConfirmButton: false,
+        timer: 1500
+      })
+}
 //********************************************************************************* */
 /**
  * Phương thức onload
@@ -44,10 +58,12 @@ function Buy(product) {
 export function onload() {
     let soluongs = localStorage.getItem('soluong');
     document.getElementById('dot-number').textContent = soluongs;
-    if(soluongs==0){document.querySelector("#thanhtoan").disabled = true;}
-    let tongtien = localStorage.getItem('tongtien');
+    if(soluongs==0)
+    {
+        document.querySelector("#thanhtoan").disabled = true;
+    }
+    let tongtien = localStorage.getItem('tongtien')?localStorage.getItem('tongtien'):0;
     document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-    let first = localStorage.getItem('soluong');
     display();
 }//end onload()
 
@@ -55,12 +71,35 @@ export function onload() {
  * Phương thức List - thêm sản phẩm đã mua vào localStorage
  */
 function list(product, soluongs) {
+    
+    addItemIntoLocalStorage(product);
+
+    //Thêm sản phẩm vào cart của accounts
+    addItemIntoAccountLocalStorage(product);
+
+    //Ép các giá trị của mảng item thành kiểu chuỗi và
+    // Truyền dữ liệu của mảng item vào localStorage  
+    //Tinh tong tien
+    let tongtien = localStorage.getItem('tongtien') ? parseInt(localStorage.getItem('tongtien')) : 0;//Lấy dữ liệu từ localStorage
+    // tongtien = parseInt(tongtien);//Ép thành kiểu số nguyên
+    if (tongtien) {
+        localStorage.setItem('tongtien', tongtien + product.gia);
+        document.getElementById('tongtien').textContent = (tongtien + product.gia).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    }
+    else {
+        localStorage.setItem('tongtien', product.gia);
+        document.getElementById('tongtien').textContent = product.gia.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    }
+    display(soluongs);
+
+}//end list()
+
+function addItemIntoLocalStorage(product){
     //Lấy các giá trị từ trong localStorage ra
     //Nếu localStorage rỗng thì sẽ trả về mảng rỗng
     //Nếu có dữ liệu trong localStorage thì sẽ ép vể kiểu JSON
     let temp = 0;
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-
     //Nếu có sản phẩm cùng tên trong giỏ hàng thì tăng số lượng của sản phẩm đó lên
     for (let i = 0; i < item.length; i++) {
         if (item[i].sanpham.localeCompare(product.ten) == 0) {
@@ -82,9 +121,9 @@ function list(product, soluongs) {
         localStorage.setItem('items', JSON.stringify(item));
         console.log("thanhcong");
     }
-    temp=0; //reset temp
-
-    //Thêm sản phẩm vào cart của accounts
+}
+function addItemIntoAccountLocalStorage(product){
+    let temp = 0;
     let accounts = localStorage.getItem('account') ? JSON.parse(localStorage.getItem('account')) : [];
     for (let i = 0; i < accounts.length; i++) {
         for (let j = 0; j < accounts[i].cart.length; j++) {
@@ -107,23 +146,7 @@ function list(product, soluongs) {
             localStorage["account"] = JSON.stringify(accounts);
         }
     }
-
-    //Ép các giá trị của mảng item thành kiểu chuỗi và
-    // Truyền dữ liệu của mảng item vào localStorage  
-    //Tinh tong tien
-    let tongtien = localStorage.getItem('tongtien') ? parseInt(localStorage.getItem('tongtien')) : 0;//Lấy dữ liệu từ localStorage
-    // tongtien = parseInt(tongtien);//Ép thành kiểu số nguyên
-    if (tongtien) {
-        localStorage.setItem('tongtien', tongtien + product.gia);
-        document.getElementById('tongtien').textContent = (tongtien + product.gia).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-    }
-    else {
-        localStorage.setItem('tongtien', product.gia);
-        document.getElementById('tongtien').textContent = product.gia.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-    }
-    display(soluongs);
-
-}//end list()
+}
 //********************************************************************************* */
 
 /**
@@ -205,43 +228,83 @@ export function minus(id) {
 export function Xoa(id) {
     //Giảm số lượng giỏ hàng được hiển thị bên ngoài
     //Xóa phần tử trong mảng
-    let yes=confirm("Bạn có chắc muốn xoá sản phẩm không?")
-    if(yes==true) {
-        let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-        //Giảm số lượng
-        let soluong = localStorage.getItem('soluong');
-        localStorage.setItem('soluong', soluong - item[id].soluong);
-        document.getElementById('dot-number').innerHTML = soluong - item[id].soluong;
-        
-        //Giảm tổng tiền
-        let tongtien = localStorage.getItem('tongtien');
-        tongtien = parseInt(tongtien);
-        tongtien -= (item[id].dongia * item[id].soluong);
-        localStorage.setItem('tongtien', tongtien);
-        document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-        item.splice(id, 1);
-        localStorage.setItem('items', JSON.stringify(item));
-        if (tongtien == 0) {
-            document.querySelector("#thanhtoan").disabled = true;
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            Xoa_act(id)
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
         }
-        let accounts = localStorage.getItem('account')? JSON.parse(localStorage.getItem('account')) : [];
-        accounts.forEach((account)=>{
-            if(account.status==1)
-            {
-                account.cart.splice(id, 1);
-            }
-        });
-        localStorage['account']= JSON.stringify(accounts);
-    }
-    display();
+      })
+    // let yes=confirm("Bạn có chắc muốn xoá sản phẩm không?");
+    // if(yes==true) {
+       
+    // }
+    
 }//end Xoa()
+function Xoa_act(id){
+    let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+    //Giảm số lượng
+    let soluong = localStorage.getItem('soluong');
+    localStorage.setItem('soluong', soluong - item[id].soluong);
+    document.getElementById('dot-number').innerHTML = soluong - item[id].soluong;
+    
+    //Giảm tổng tiền
+    let tongtien = localStorage.getItem('tongtien');
+    tongtien = parseInt(tongtien);
+    tongtien -= (item[id].dongia * item[id].soluong);
+    localStorage.setItem('tongtien', tongtien);
+    document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+    item.splice(id, 1);
+    localStorage.setItem('items', JSON.stringify(item));
+    if (tongtien == 0) {
+        document.querySelector("#thanhtoan").disabled = true;
+    }
+    let accounts = localStorage.getItem('account')? JSON.parse(localStorage.getItem('account')) : [];
+    accounts.forEach((account)=>{
+        if(account.status==1)
+        {
+            account.cart.splice(id, 1);
+        }
+    });
+    localStorage['account']= JSON.stringify(accounts);
+    display();
+}
 //********************************************************************************* */
 /**
  * Phương thức Xóa toàn bộ
  */
 export function Clear() {
-    let yes=confirm("Bạn có chắc muốn xoá giỏ hàng không?")
-    if(yes==true) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            Clear_act()
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+}//end Clear
+function Clear_act(){
     //reset soluong hiển thị ngoài giỏ hàng = 0
     localStorage.setItem('soluong', 0);
     document.getElementById('dot-number').textContent = 0;
@@ -260,9 +323,8 @@ export function Clear() {
     localStorage['account']= JSON.stringify(accounts);
     document.getElementById('tongtien').textContent = 0;
     document.querySelector("#thanhtoan").disabled = true;
-    }
     display();
-}//end Clear
+}
 
 /**
  * 
@@ -291,6 +353,3 @@ export function minusEvent(){
         })
     }
 }
-
-
-

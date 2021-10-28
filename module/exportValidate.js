@@ -1,4 +1,6 @@
-function SignIn(){
+import {sendEmail} from "./email.js";
+
+(function SignIn(){
     let SignIn= localStorage.getItem("onSignIn")?JSON.parse(localStorage.getItem("onSignIn")):undefined;
     if(SignIn)
     {
@@ -7,8 +9,8 @@ function SignIn(){
         document.getElementById('phone').value=SignIn.phone;
         document.getElementById('address').value=SignIn.address;
     }
-}
-SignIn()
+})();
+// SignIn()
 function validate() {
     let fullname = document.getElementById('name').value
     let email = document.getElementById('email').value
@@ -93,13 +95,15 @@ function validate() {
 
 
     if (fullname && SDT && diachi && address && hinhthuc) {
-        document.getElementById('dathang').innerHTML = 'Quý khách đặt hàng thành công';
-        document.getElementById('btn-dathang').hidden = true;
-        document.getElementById('continue').hidden=false;
-        document.getElementById('name').disabled=true;
-        document.getElementById('email').disabled=true;
-        document.getElementById('phone').disabled=true;
-        document.getElementById('address').disabled=true;
+        // document.getElementById('dathang').innerHTML = 'Quý khách đặt hàng thành công';
+        // document.getElementById('btn-dathang').hidden = true;
+        // document.getElementById('continue').hidden=false;
+        // document.getElementById('name').disabled=true;
+        // document.getElementById('email').disabled=true;
+        // document.getElementById('phone').disabled=true;
+        // document.getElementById('address').disabled=true;
+
+        //Xuất thời gian xử lí
         sendEmail(fullname,email);
         localStorage.setItem("soluong",0);
         localStorage.setItem("items",[]);
@@ -107,49 +111,6 @@ function validate() {
     }
     
 }
-function sendEmail(name,email){
-    Email.send({
-        // Host: "smtp.mailtrap.io",
-        // Username:"ee2f258cf8bdc2",
-        // Password:"cqqkvejagsnjfpnv",
-        //SecureToken:"0f169ac9-f4b0-45f2-9276-4520efa7c007",
-        SecureToken:"fc650f52-ff65-40df-b668-d2868f49f23a",
-        To:`${email}`,
-        From: "duonggiatrung113@gmail.com",
-        Subject: "Trunk Apple - Đơn hàng của bạn:",
-        Body: `
-        Xin chân thành cám ơn ${name} đã ủng hộ chúng tôi! 
-        ${emailContent()}
-        `
-    }).then((email) => alert("Mail has been send"));
-}
-function emailContent(){
-    let product = localStorage.getItem("items")?JSON.parse(localStorage.getItem("items")):[];
-    let tongtien = localStorage.getItem("tongtien");
-    tongtien=parseInt(tongtien);
-    console.log(tongtien);
-    let tableContent = `<tr class="bg-dark text-light">
-    <td class="col-lg-2" style="boder:2px solid silver">STT</td>
-    <td class="col-lg-5" style="width:300px;boder:2px solid silver">Tất cả sản phẩm</td>
-    <td class='col-lg-2' style="boder:2px solid silver" >Số lượng</td>
-    <td class='col-lg-2' style="boder:2px solid silver" >Thành tiền</td>
-    </tr>`;
-    product.forEach((items, index) => {
-        index++;
-        tableContent += `<tr>
-        <td class="col-lg-2"  style="boder:2px solid silver">${index}</td>
-        <td class="col-lg-5" style="width:300px;boder:2px solid silver">${items.sanpham}</td>
-        <td class="col-lg-2" >${items.soluong}</td>
-        <td class='col-lg-2'  style="boder:2px solid silver">${(items.dongia*items.soluong).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g,'$1.')}đ</td>
-        </tr>`;
-    })
-    let html=`  <table id="modal-list" class="text-center">
-    ${tableContent}
-    <tr style="boder:2px solid silver">
-        Tổng tiền: ${tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g,'$1.')}
-    </tr>
-    </table>`;
-    return html;
-}
+
 // document.querySelector('#btn-dathang').addEventListener('click', validate);
 export{validate};

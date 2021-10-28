@@ -11,10 +11,4 @@ export function rating(){
             
         });
     });
-    // for (let j = index; j < 5; j++) {
-            //     con.children[j].style.color = "black";
-            // }
-    // function danhgia(index, stt) {
-     
-    // }// end danhgia()
 }

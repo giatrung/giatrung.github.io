@@ -1,4 +1,5 @@
 // ===============ONBLUR VALIDATATION==================
+// import { fnameFunction, diachiFunction } from './exportOnBlur.js';
 document.getElementById("name-signup").onblur = function () { fnameFunction() };
 document.getElementById("email-signup").onblur = function () { mailFunction() };
 document.getElementById("phone-signup").onblur = function () { phoneFunction() };
@@ -122,7 +123,6 @@ function diachiFunction() {
         return diachi;
     }
 }
-
 function passwordFunction() {
     let StrongReg = pass => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(pass);
     let password = document.getElementById('password-signup').value;
@@ -194,5 +194,3 @@ function signup(){
         alert("Đăng kí thành công!");
     }
 }
-document.getElementById('btn-dangki').addEventListener('click', signup);
-// export{fnameFunction,mailFunction,phoneFunction,diachiFunction}

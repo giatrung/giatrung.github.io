@@ -34,8 +34,8 @@ export const products = [
     {
         id: 3,
         tag: "iphone",
-        gia: 2790000,
-        giaGoc: 29990000,
+        gia: 25790000,
+        giaGoc: 26999000,
         hinh: "../image/iphone-12-pro-gold-vna-00-700x700.jpg",
         ten: "iPhone 12 Pro Max VN/A(Full VAT)(128GB)",
         soluong: 0,

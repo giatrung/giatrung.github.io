@@ -1,91 +1,50 @@
 import { products } from "./product.js";
 import {list} from '/module/displayProduct.js';
+import {addToCart} from './Cart.js';
 
 /**
- * Chọn sản phẩm ở trang chủ
- * @param {} id 
+ * Chọn sản phẩm ở thanh filter
+ * @param {} 
  */
- export function choose(){
+ export let choose=()=>{
     let pick = document.getElementsByClassName('pick');
+    let gia = document.getElementsByClassName('gia');
     for(let i=0; i<pick.length; i++){
         pick[i].addEventListener('click', ()=>{
                 // localStorage.setItem("pick",i+1);
                 localStorage.setItem("pick",pick[i].value);
-                document.getElementById("iphone-product").innerHTML=list(filter());
-                // console.log(switchcase())
+                document.getElementById("iphone-product").innerHTML=list(filterLoai());
+                addToCart(filterLoai());
+                gia[gia.length-1].checked="true";
+        });
+    }
+    for(let i=0; i<pick.length; i++){
+        gia[i].addEventListener('click', ()=>{
+                // localStorage.setItem("pick",i+1);
+                localStorage.setItem("gia",gia[i].value);
+                document.getElementById("iphone-product").innerHTML=list(filterGia());
+                addToCart(filterGia());
+                pick[pick.length-1].checked="true";
         });
     }
 }
-// export function switchcase() {
-//     let key = localStorage.getItem('pick')? parseInt(localStorage.getItem('pick')):0;
-//     switch (key) {
-//         case 1: {
-//             filter(1);
-//             let tr = document.querySelectorAll(".pick");
-//             tr[0].checked = true;
-            
-//             break;
-//         }
-//         case 2: {
-//             filter(2);
-//             let tr = document.querySelectorAll(".pick");
-//             tr[1].checked = true;
-            
-//             break;
-//         }
-//         case 3: {
-//             filter(3);
-//             let tr = document.querySelectorAll(".pick");
-//             tr[2].checked = true;
-            
-//             break;
-//         }
-//         default: filter(4);
-//     }
-// }
-export function filter() {
+
+export let filterLoai=()=> {
     let x=products;
     let key = localStorage.getItem('pick');
     if(key=='other'){
         return x;
     }
     return x=x.filter(a=>{return a.tag==key});
+    
 }
-/**
- * Phương thức Bộ lọc
- * @param {*} id 
- */
-// export function filter(id) {
-//     if (id == 1) {
-//         loopFilterNone('ipad');
-//         loopFilterNone('mac');
-//         loopFilterBlock('iphone');
-//     }
-//     else if (id == 2) {
-//         loopFilterNone('iphone');
-//         loopFilterNone('mac');
-//         loopFilterBlock('ipad');
-//     }
-//     else if (id == 3) {
-//         loopFilterNone('ipad');
-//         loopFilterNone('iphone');
-//         loopFilterBlock('mac');
-//     }
-//     else {
-//         loopFilterBlock('mac');
-//         loopFilterBlock('iphone');
-//         loopFilterBlock('ipad');
-//     }
-// }//end filter()
-// function loopFilterNone(tagName){
-//     let tagname=document.getElementsByTagName(tagName);
-//     for(let i = 0; i <tagname.length; i++){
-//         tagname[i].style.display="none";
-//     }
-// }
-// function loopFilterBlock(tagName){
-//     let tagname=document.getElementsByTagName(tagName);
-//     for(let i = 0; i <tagname.length; i++){
-//         tagname[i].style.display="block";
-//     }
-// }
+export let filterGia = () => {
+    let x=products;
+    let key = localStorage.getItem('gia');
+    switch(key){
+        case "13":return x=x.filter(a=>{return a.gia<15000000});break;
+        case "19":return x=x.filter(a=>{return a.gia<19000000});break;
+        case "20":return x=x.filter(a=>{return a.gia>20000000});break;
+        default: return x;
+    }
+}

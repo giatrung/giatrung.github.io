@@ -15,6 +15,7 @@ function fnameFunction() {
         else {
             document.getElementById('name-error').innerHTML = 'OK!';
             document.getElementById('name-error').style.color="green";
+            return fullname;
         }
     }
 }
@@ -30,7 +31,6 @@ function mailFunction() {
         if (!checkemail(email)) {
             document.getElementById('mail-error').innerHTML = 'Địa chỉ email không hợp lệ';
             document.getElementById('mail-error').style.color="red";
-
         }
         else {
             document.getElementById('mail-error').innerHTML = 'OK!';
@@ -74,6 +74,7 @@ function diachiFunction(){
     else {
         document.getElementById('Diachi-error').innerHTML = 'OK!';
             document.getElementById('Diachi-error').style.color="green";
+            return diachi;
     }
 }
 export{fnameFunction,mailFunction,phoneFunction,diachiFunction}

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Sản phẩm Apple</title>
 </head>
 
@@ -122,12 +123,18 @@
     <div  class="container-fluid iphone-product mt-3 mb-3">
         <div id="title" class="title" style="width: 100%; border-bottom: 1px solid rgb(196, 196, 196) ; height: 60px;">
             <div class="row" style="width: 100%;">
-                <h1 class="col-lg-7" style="margin: 0px 80px; font-weight: normal;">Sản phẩm</h1>
+                <h1 class="col-lg-3" style="margin: 0px 80px; font-weight: normal;">Sản phẩm</h1>
                 <div class="col-lg-3" style="padding-top: 30px;">Bộ lọc:
                     <input class="pick" type="radio" name="choose" value="iphone" > iPhone
                     <input class="pick" type="radio" name="choose"  value="ipad" > iPad
                     <input class="pick" type="radio" name="choose"   value="mac"> Macbook
                     <input class="pick" type="radio" name="choose"  value="other" checked> Tất cả
+                </div>
+                <div class="col-lg-4" style="padding-top: 30px;">Giá:
+                    <input class="gia" type="radio" name="cost" value="13" > 7-15 triệu 
+                    <input class="gia" type="radio" name="cost"  value="19" > 15-20 triệu 
+                    <input class="gia" type="radio" name="cost"   value="20"> Trên 20 triệu 
+                    <input class="gia" type="radio" name="cost"  value="0" checked> Tất cả
                 </div>
             </div>
         </div>
@@ -270,7 +277,7 @@ padding-left: 5px;background-color: rgb(240, 240, 240);color:black;margin: 5px">
     <!-- ===================================================================== -->
     <!-- ===========================SCRIPT====================== -->
     
-    <script type="module" src="./module/import.js"></script>
+    <script type="module" src="./module/main.js"></script>
     <script src="https://smtpjs.com/v3/smtp.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
