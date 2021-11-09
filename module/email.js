@@ -1,5 +1,14 @@
+//MODULE XỬ LÍ HOẠT ĐỘNG GỬI EMAIL CHO KHÁCH HÀNG KHI KHÁCH HÀNG ĐẶT HÀNG
+//CÓ SỬ DỤNG PROMISE, THEN, CATCH
+
+/**
+ * Hàm gửi mail
+ * @param {*} name - Tên khách hàng
+ * @param {*} email - email khách hàng
+ */
 export function sendEmail(name,email){
-    let timerInterval
+        //Tạo thanh xử lí đơn hàng
+        let timerInterval
         Swal.fire({
         title: 'Đang xử lí đơn hàng!',
         html: 'Xử lí đơn hàng trong <b></b> giây.',
@@ -21,8 +30,14 @@ export function sendEmail(name,email){
             console.log('I was closed by the timer')
         }
         })
-    Email.send({
-        SecureToken:"fc650f52-ff65-40df-b668-d2868f49f23a",
+        //end Tạo thanh xử lí đơn hàng
+
+        //Gửi mail
+        Email.send({
+        // SecureToken:"fc650f52-ff65-40df-b668-d2868f49f23a", //Mã bảo mật 2 lớp đã được mã hóa.
+        Host: "smtp.gmail.com",
+        Username: "dgtunicity@gmail.com",
+        Password: "idoilwsshynyxglv",
         To:`${email}`,
         From: "duonggiatrung113@gmail.com",
         Subject: "Trunk Apple - Đơn hàng của bạn:",
@@ -30,9 +45,8 @@ export function sendEmail(name,email){
         Xin chân thành cám ơn ${name} đã ủng hộ chúng tôi! 
         ${emailContent()}
         `
-    }).then((email) =>
-    //  alert("Mail has been send")
-    setTimeout(()=>{
+        }).then((email) => setTimeout(()=>{
+        //Nếu email gửi thành công sẽ xuất ra thông báo này.
         Swal.fire({
             title: '<strong>Đặt hàng thành công</strong>',
             icon: 'success',
@@ -51,6 +65,11 @@ export function sendEmail(name,email){
     )
     .catch((err)=>alert("Fail! Mail has not been send!"));
 }
+
+/**
+ * Nội dung email mà khách nhận được
+ * @returns 
+ */
 function emailContent(){
     let product = localStorage.getItem("items")?JSON.parse(localStorage.getItem("items")):[];
     let tongtien = localStorage.getItem("tongtien");

@@ -1,3 +1,4 @@
+//MODULE CHỨC CÁC SẢN PHẨM
 export const products = [
     {
         id: 1,

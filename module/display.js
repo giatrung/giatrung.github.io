@@ -1,5 +1,7 @@
 import {xoaEvent,plusEvent,minusEvent,Clear} from './Cart.js';
 
+//MODULE HIỂN THỊ SẢN PHẨM TRONG GIỎ HÀNG
+
 export let display=()=> {
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
     let tableContent = `<tr class="bg-dark text-light"><td class="col-lg-5" style="width=300px">Tất cả sản phẩm</td>
@@ -26,6 +28,7 @@ export let display=()=> {
         </tr>`;
     })
     document.getElementById('modal-list').innerHTML = tableContent;
+    //Thêm chức năng xóa, tăng, giảm số lượng và xóa tất cả cho từng button trong giỏ hàng
     xoaEvent();
     minusEvent();
     plusEvent();

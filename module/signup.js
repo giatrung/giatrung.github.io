@@ -1,5 +1,4 @@
-// ===============ONBLUR VALIDATATION==================
-
+//MODULE CHỨC NĂNG ĐĂNG KÍ
 document.getElementById("name-signup").onblur = function () { fnameFunction() };
 document.getElementById("email-signup").onblur = function () { mailFunction() };
 document.getElementById("phone-signup").onblur = function () { phoneFunction() };
@@ -7,6 +6,9 @@ document.getElementById("address-signup").onblur = function () { diachiFunction(
 document.getElementById("password-signup").onblur = function () { passwordFunction() };
 document.getElementById("password2-signup").onblur = function () { password2Function() };
 document.getElementById("deal-signup").onchange = function () { verify() };
+
+
+//Kiể tra tên khách hàng
 function fnameFunction() {
     let fullname = document.getElementById('name-signup').value;
     if (fullname == '') {
@@ -26,10 +28,13 @@ function fnameFunction() {
         }
     }
 }
+
+//Kiểm tra email khách hàng
 function mailFunction() {
     let temp=0;
     let email = document.getElementById('email-signup').value;
-    //Kiểm tra email này đã được đăng ký hay chưa
+
+    //Kiểm tra email này đã được đăng ký trước đó hay chưa
     let mail = localStorage.getItem("account")? JSON.parse(localStorage.getItem("account")):[];
     if(mail!=[]){
         for(let i=0;i<mail.length;i++)
@@ -67,6 +72,7 @@ function mailFunction() {
     }
 }
 
+// Kiểm tra số điện thoại
 function phoneFunction() {
     let temp=0;
     let SDT = document.getElementById('phone-signup').value;
@@ -109,7 +115,7 @@ function phoneFunction() {
         }
     }
 }
-
+//Kiểm tra địa chỉ
 function diachiFunction() {
     let diachi = document.getElementById('address-signup').value;
     //Dia chi
@@ -123,6 +129,7 @@ function diachiFunction() {
         return diachi;
     }
 }
+//Kiểm tra mật khẩu
 function passwordFunction() {
     let StrongReg = pass => /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/.test(pass);
     let password = document.getElementById('password-signup').value;
@@ -143,6 +150,8 @@ function passwordFunction() {
     }
     return password;
 }
+
+//Kiểm tra phần xác nhập mật khẩu
 function password2Function() {
     let password = document.getElementById('password2-signup').value;
     //Dia chi
@@ -163,6 +172,7 @@ function password2Function() {
     }
 }
 
+//Tích vào nút đồng ý
 function verify() {
     let check = document.getElementById('deal-signup');
     if (check.checked == false) {
@@ -174,10 +184,15 @@ function verify() {
     }
 }
 
+/**
+ * Hàm đăng kí
+ */
 function signup(){
+    //Nếu tất cả thông tin được điền đầy đủ thì thêm thông tin khách hàng vào LocalStorage(account)
     if(fnameFunction() && mailFunction() && phoneFunction() && diachiFunction() && passwordFunction() && password2Function() && verify())
     {
         let accounts=localStorage.getItem("account")?JSON.parse(localStorage.getItem("account")):[];
+        //Đẩy các thong tin khách hàng vừa nhập vào mảng account
         accounts.push({
             status: 0,
             fname: fnameFunction(),
@@ -187,9 +202,12 @@ function signup(){
             address: diachiFunction(),
             cart:[]
         })
+        //Rồi lưu vào localStorage
         localStorage.setItem("account",JSON.stringify(accounts));
         document.getElementById('btn-dangki').hidden=true;
         document.getElementById('continue2').hidden=false;
+
+        //Xuất thông báo
         Swal.fire({
             position: 'center',
             icon: 'success',

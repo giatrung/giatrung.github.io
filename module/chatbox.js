@@ -1,4 +1,6 @@
 //********************************************************************** */
+//MODULE CHỨC NĂNG HỘP CHAT (CHATBOX)
+
 /**
  * Phương thức để Reply trả lời tin nhắn
  */
@@ -48,8 +50,7 @@ export function Reply() {
  
  //********************************************************************************* */
  /**
-  * Code tham khảo ở StackoverFlow
-  * Bấm Enter sẽ kích hoạt nút gửi
+  * Code tham khảo ở StackoverFlow Bấm Enter sẽ kích hoạt nút gửi
   */
  export function submit(){
  var input = document.getElementById("message");

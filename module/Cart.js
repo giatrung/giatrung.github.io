@@ -1,14 +1,20 @@
 import {display} from '/module/display.js';
 import { products } from '/module/product.js';
+/**
+ * MODULE CHỨA CÁC CHỨC NĂNG CỦA GIỎ HÀNG
+ */
+
+
 
 //Nếu chưa có số lượng trong giỏ hàng thì nút thanh toán sẽ disable
 /**
- * Thêm sự kiện vào nút Mua
+ * Thêm sự kiện vào nút mua
+ * @param {*} x - Bộ lọc sản phẩm (filter.js)
  */
 export function addToCart(x){
     let addToCart = document.getElementsByClassName("buy");
     for (let i = 0; i < addToCart.length; i++) {
-        addToCart[i].addEventListener("click", () => {
+        addToCart[i].addEventListener("click", () => { 
             if(x){
                 Buy(x[i]);
             }
@@ -42,6 +48,10 @@ function Buy(product) {
     list(product, soluongs);
     document.querySelector("#thanhtoan").disabled = false;
 }//Buy()
+/**
+ * Hàm xuất ra thông báo
+ * @param {} item 
+ */
 function alertAddtoCart(item){
     Swal.fire({
         position: 'top-end',
@@ -72,6 +82,7 @@ export function onload() {
  */
 function list(product, soluongs) {
     
+    //Thêm sản phẩm vào localStorage
     addItemIntoLocalStorage(product);
 
     //Thêm sản phẩm vào cart của accounts
@@ -94,10 +105,17 @@ function list(product, soluongs) {
 
 }//end list()
 
+/**
+ * Thêm sản phẩm vào localStorage
+ * @param {*} product 
+ */
 function addItemIntoLocalStorage(product){
     //Lấy các giá trị từ trong localStorage ra
     //Nếu localStorage rỗng thì sẽ trả về mảng rỗng
     //Nếu có dữ liệu trong localStorage thì sẽ ép vể kiểu JSON
+
+    //Temp = 0 : sản phẩm chưa có trong giỏ hàng
+    //Temp = 1: sản phẩm đã có trong giỏ hàng
     let temp = 0;
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
     //Nếu có sản phẩm cùng tên trong giỏ hàng thì tăng số lượng của sản phẩm đó lên
@@ -109,7 +127,8 @@ function addItemIntoLocalStorage(product){
             break;
         }
     }
-    //nếu chưa có sản phẩm trong item thì thêm vào
+    //Kiểm tra xem sản phẩm đó có tồn tại trong localStorage(items) chưa
+    //Nếu chưa thì thêm sản phẩm đó vào.
     if (temp == 0) {
         item.push({
             id: product.id,
@@ -122,11 +141,18 @@ function addItemIntoLocalStorage(product){
         console.log("thanhcong");
     }
 }
+/**
+ * Thêm sản phần vào tài khoản trong localStorage
+ * @param {*} product 
+ */
 function addItemIntoAccountLocalStorage(product){
+    //Temp = 0 : sản phẩm chưa có trong giỏ hàng
+    //Temp = 1: sản phẩm đã có trong giỏ hàng
     let temp = 0;
     let accounts = localStorage.getItem('account') ? JSON.parse(localStorage.getItem('account')) : [];
     for (let i = 0; i < accounts.length; i++) {
         for (let j = 0; j < accounts[i].cart.length; j++) {
+            // Nếu sản phẩm đã có trong giỏ hàng của account thì tăng số lượng sản phẩm đó lên 1
             if (accounts[i].cart[j].sanpham.localeCompare(product.ten) == 0) {
                 temp = 1;
                 accounts[i].cart[j].soluong++;
@@ -134,6 +160,10 @@ function addItemIntoAccountLocalStorage(product){
                 break;
             }
         }
+        //Tìm xem tài khoản nào đang được đăng nhập và kiểm tra xem sản phẩm đó có tồn tại trong cart của account chưa
+        //Nếu chưa thì thêm sản phẩm đó vào.
+        //account.status=0 : tài khoản không trong trạng thái hoạt động
+        //account.status=1 : tài khoản đang trong trạng thái hoạt động
         if (accounts[i].status == 1 && temp==0) {
             accounts[i].cart.push({
                 id: product.id,
@@ -169,11 +199,13 @@ export function plus(id) {
         }
     }
     localStorage['account']=JSON.stringify(accounts);
+    
     //Tăng số lượng giỏ hàng
     let soluongs = localStorage.getItem('soluong');
     soluongs = parseInt(soluongs);
     localStorage.setItem('soluong', soluongs + 1);
     document.getElementById('dot-number').textContent = soluongs + 1;
+
     //Tăng tổng tiền
     let tongtien = localStorage.getItem('tongtien');
     tongtien = parseInt(tongtien);
@@ -190,6 +222,8 @@ export function minus(id) {
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
     let accounts= localStorage.getItem('account')?JSON.parse(localStorage.getItem('account')) : [];
     //Nếu có đã đăng nhập tài khoản thì trừ số lượng sản phẩm trong giỏ hàng trong tài khoản
+    //account.status=0 : tài khoản không trong trạng thái hoạt động
+    //account.status=1 : tài khoản đang trong trạng thái hoạt động
     for(let i=0;i<accounts.length;i++) {
         if(accounts[i].status==1)
         {
@@ -226,8 +260,6 @@ export function minus(id) {
  * @param {*} id - vị trí cần xóa 
  */
 export function Xoa(id) {
-    //Giảm số lượng giỏ hàng được hiển thị bên ngoài
-    //Xóa phần tử trong mảng
     Swal.fire({
         title: 'Are you sure?',
         text: "You won't be able to revert this!",
@@ -238,23 +270,25 @@ export function Xoa(id) {
         confirmButtonText: 'Yes, delete it!'
       }).then((result) => {
         if (result.isConfirmed) {
-            Xoa_act(id)
-          Swal.fire(
+            Xoa_act(id);
+            Swal.fire(
             'Deleted!',
             'Your file has been deleted.',
             'success'
           )
         }
       })
-    // let yes=confirm("Bạn có chắc muốn xoá sản phẩm không?");
-    // if(yes==true) {
-       
-    // }
-    
 }//end Xoa()
+/**
+ * Hành động xóa sản phẩm
+ * @param {*} id 
+ */
 function Xoa_act(id){
+    
     let item = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-    //Giảm số lượng
+
+    //Giảm số lượng giỏ hàng được hiển thị bên ngoài
+    
     let soluong = localStorage.getItem('soluong');
     localStorage.setItem('soluong', soluong - item[id].soluong);
     document.getElementById('dot-number').innerHTML = soluong - item[id].soluong;
@@ -265,11 +299,16 @@ function Xoa_act(id){
     tongtien -= (item[id].dongia * item[id].soluong);
     localStorage.setItem('tongtien', tongtien);
     document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+
+    //Xóa phần tử trong mảng
     item.splice(id, 1);
     localStorage.setItem('items', JSON.stringify(item));
     if (tongtien == 0) {
         document.querySelector("#thanhtoan").disabled = true;
     }
+    //Nếu có tài khoản nào đang đăng nhập thì xóa sản phẩm đó trong cart của account đó luôn
+    //account.status=0 : tài khoản không trong trạng thái hoạt động
+    //account.status=1 : tài khoản đang trong trạng thái hoạt động
     let accounts = localStorage.getItem('account')? JSON.parse(localStorage.getItem('account')) : [];
     accounts.forEach((account)=>{
         if(account.status==1)
@@ -293,7 +332,7 @@ export function Clear() {
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
         confirmButtonText: 'Yes, delete it!'
-      }).then((result) => {
+        }).then((result) => {
         if (result.isConfirmed) {
             Clear_act()
           Swal.fire(
@@ -304,6 +343,10 @@ export function Clear() {
         }
       })
 }//end Clear
+
+/**
+ * Hành động xóa tất cả
+ */
 function Clear_act(){
     //reset soluong hiển thị ngoài giỏ hàng = 0
     localStorage.setItem('soluong', 0);
@@ -315,7 +358,7 @@ function Clear_act(){
     localStorage.setItem('items', JSON.stringify(item));
     localStorage.setItem('tongtien', 0);
 
-    //Xoá tất cả sản phẩm trong giỏ hàng của user
+    //Xoá tất cả sản phẩm trong giỏ hàng của user nếu có tài khoản user nào đang đăng nhập
     let accounts = localStorage.getItem('account')? JSON.parse(localStorage.getItem('account')) : [];
     accounts.forEach((account)=>{
         account.cart=[];
@@ -327,7 +370,7 @@ function Clear_act(){
 }
 
 /**
- * 
+ * Thêm các event vào các nút xóa, tăng số lượng, giảm số lượng trong giỏ hàng
  */
 export function xoaEvent(){
     let xoa=document.getElementsByClassName('xoa');
@@ -353,3 +396,4 @@ export function minusEvent(){
         })
     }
 }
+//end phương thức xóa, tăng số lượng, giảm số lượng trong giỏ hàng

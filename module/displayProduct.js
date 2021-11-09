@@ -1,4 +1,7 @@
 // import { products } from "./product.js";
+
+//MODULE HIỂN THỊ TẤT CẢ SẢN PHẨM RA NGOÀI TRANG SẢN PHẨM
+
 export let list =(key) =>{
     let temp=``;
     key.forEach((item,index)=>{
@@ -54,7 +57,6 @@ export let list =(key) =>{
     });
     return temp;
     }
-////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 

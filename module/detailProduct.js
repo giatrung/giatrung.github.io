@@ -1,4 +1,8 @@
 import{products} from './product.js';
+
+//MODULE CHỨC NĂNG HIỂN THỊ THÔNG TIN CẤU HÌNH SẢN PHẨM
+
+
 let x=products;
 const detailproducts = (product)=>{
     let contentDetail = `- Màn hình: ${product.manHinh},
@@ -10,6 +14,7 @@ const detailproducts = (product)=>{
 `
 return contentDetail;
 }
+
 export function displayDetailproducts(){
     
     let detail = document.getElementsByClassName('detail');

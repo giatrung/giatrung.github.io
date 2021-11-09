@@ -1,4 +1,6 @@
 import {sendEmail} from "./email.js";
+//MODULE THÊM 1 LỚP VALIDATE Ở NÚT THANH TOÁN TRONG MODAL THANH TOÁN
+
 
 (function SignIn(){
     let SignIn= localStorage.getItem("onSignIn")?JSON.parse(localStorage.getItem("onSignIn")):undefined;
@@ -95,15 +97,6 @@ function validate() {
 
 
     if (fullname && SDT && diachi && address && hinhthuc) {
-        // document.getElementById('dathang').innerHTML = 'Quý khách đặt hàng thành công';
-        // document.getElementById('btn-dathang').hidden = true;
-        // document.getElementById('continue').hidden=false;
-        // document.getElementById('name').disabled=true;
-        // document.getElementById('email').disabled=true;
-        // document.getElementById('phone').disabled=true;
-        // document.getElementById('address').disabled=true;
-
-        //Xuất thời gian xử lí
         sendEmail(fullname,email);
         localStorage.setItem("soluong",0);
         localStorage.setItem("items",[]);

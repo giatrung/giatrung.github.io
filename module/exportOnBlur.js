@@ -1,4 +1,8 @@
-// ===============ONBLUR VALIDATATION==================
+// ===============MODULE ONBLUR VALIDATATION Ở MODAL THANH TOÁN==================
+/**
+ *  Kiểm tra tên người dùng
+ * @returns 
+ */
 function fnameFunction() {
     console.log("hello");
     let fullname = document.getElementById('name').value;
@@ -19,6 +23,7 @@ function fnameFunction() {
         }
     }
 }
+//Kiểm tra mail người dùng
 function mailFunction() {
     let email = document.getElementById('email').value;
     //email
@@ -39,6 +44,7 @@ function mailFunction() {
     }
 }
 
+//Kiểm tra số điện thoại người dùng
 function phoneFunction(){
  let SDT = document.getElementById('phone').value;
 //SDT
@@ -64,6 +70,7 @@ function phoneFunction(){
     }
 }
 
+//Kiểm tra địa chỉ người dùng
 function diachiFunction(){
      let diachi = document.getElementById('address').value;
  //Dia chi
@@ -73,8 +80,10 @@ function diachiFunction(){
     }
     else {
         document.getElementById('Diachi-error').innerHTML = 'OK!';
-            document.getElementById('Diachi-error').style.color="green";
-            return diachi;
+        document.getElementById('Diachi-error').style.color="green";
+        return diachi;
     }
 }
+
+//Xuất các phương thức trên
 export{fnameFunction,mailFunction,phoneFunction,diachiFunction}

@@ -1,15 +1,21 @@
 import {display} from './display.js';
+//MODULE CHỨC NĂNG ĐĂNG NHẬP, ĐĂNG XUẤT
+
 /**
- * Phương thức đăng nhập
+ * Phương thức đăng nhập bằng số điện thoại
  * @returns 
  */
 function dangnhap() {
+    //Lấy dữ liệu số điện thoại và mật khẩu để kiểm tra
     let phone = document.getElementById("phone-signin").value;
     let pass = document.getElementById("password-signin").value;
     let info = localStorage.getItem("account") ? JSON.parse(localStorage.getItem("account")) : [];
+    //Kiểm tra xem số điện thoại và mật khẩu có trùng khớp với tài khoản nào trong LocalStrage không
     for (let i = 0; i < info.length; i++) {
         if (phone == info[i].phone && pass == info[i].password) {//Nếu SDT và mật khẩu nhập vào đúng
-            info[i].status = 1;//Thay đổi thuộc tính status thành 1;
+            //status=0: trạng thái tài khoảng không hoạt động
+            //status=1: trạng thái tài khoảng đang hoạt động
+            info[i].status = 1;//Thay đổi thuộc tính status của tài khoản đó thành 1;
             localStorage["account"] = JSON.stringify(info);
             document.getElementById("status-signin").innerHTML = `Hello <b>${info[i].fname}</b>`;//Thay đổi attribute Dome của nút signin.
             changeAttribute("dropdown","",1);
@@ -18,8 +24,8 @@ function dangnhap() {
             saveItemFromAccToCart(accounts,item,info);//Cập nhật lại số lượng và tổng tiền khi user đăng nhập
             updateInfoItemWhenUserLogin(item);//Hiển thị lại số lượng và tổng tiền khi user đăng nhập vừa cập nhật lại
             reDisplayQuantityAndSumCost();
-            display();
-            alertSignIn()
+            display(); //Hiển thị các sản phẩm trong giỏ hàng vẫn còn lưu ở lần đăng nhập trước
+            alertSignIn() //Xuất thông báo đăng nhập thành công
             return;
         }
     }
@@ -28,15 +34,20 @@ function dangnhap() {
     document.getElementById("password-signin").value="";
 }
 
+/**
+ * Hiển thị lại số lượng và tổng tiền của giỏ hàng
+ */
 function reDisplayQuantityAndSumCost(){
     let soluongs = localStorage.getItem('soluong');
     document.getElementById('dot-number').textContent = soluongs;
     let tongtien = localStorage.getItem('tongtien');
     document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 }
+
 //Lưu lại các sản phẩm trong giỏ hàng mà user đã thêm trước đó
 function saveItemFromAccToCart(accounts,item,info){
     for (let j = 0; j < accounts.length; j++) {
+        //Tìm tài khoảng vừa mới đăng nhập và thêm các sản phẩm từ account.cart sang vào localStorage của item
         if (accounts[j].status == 1) {
             item.push(...accounts[j].cart);
             localStorage.setItem("items", JSON.stringify(item));
@@ -64,9 +75,9 @@ function updateInfoItemWhenUserLogin(item){
 
 /**
  * Đổi thuộc tính khi đăng nhập vào.
- * @param {} dataToggle 
- * @param {*} dataTarget 
- * @param {*} dataStatus 
+ * @param {} dataToggle - Các thuộc tính Dom html
+ * @param {*} dataTarget - Các thuộc tính Dom html
+ * @param {*} dataStatus - Các thuộc tính Dom html
  */
 function changeAttribute(dataToggle,dataTarget,dataStatus){
     document.getElementById("signin").setAttribute("data-toggle", dataToggle); 
@@ -74,7 +85,7 @@ function changeAttribute(dataToggle,dataTarget,dataStatus){
     document.getElementById("signin").setAttribute("data-status", dataStatus);
 }
 /**
- * Phương thuất đăng xuất
+ * Phương thức đăng xuất
  */
 function signout() {
     let info = localStorage.getItem("account") ? JSON.parse(localStorage.getItem("account")) : [];
@@ -94,6 +105,7 @@ function signout() {
             localStorage.setItem("soluong", 0);
         }
     }
+    //Xuất thông báo
     Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -117,6 +129,9 @@ function onload() {
     reDisplayQuantityAndSumCost();
     display();
 }
+/**
+ * Hàm xuất thông báo khi đăng nhập
+ */
 export function alertSignIn(){
     Swal.fire({
         position: 'center',
