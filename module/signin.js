@@ -40,7 +40,7 @@ function dangnhap() {
 function reDisplayQuantityAndSumCost(){
     let soluongs = localStorage.getItem('soluong');
     document.getElementById('dot-number').textContent = soluongs;
-    let tongtien = localStorage.getItem('tongtien');
+    let tongtien = localStorage.getItem('tongtien') ? parseInt(localStorage.getItem('tongtien')) : 0;
     document.getElementById('tongtien').textContent = tongtien.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
 }
 

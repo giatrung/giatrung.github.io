@@ -15,6 +15,7 @@ const detailproducts = (product)=>{
 return contentDetail;
 }
 
+//Phương thức hiển thị chi tiết sản phẩm
 export function displayDetailproducts(){
     
     let detail = document.getElementsByClassName('detail');
